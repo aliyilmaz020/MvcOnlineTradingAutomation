@@ -1,0 +1,15 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Category
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    
+    <input type="hidden" name="CategoryId" value="@Model.CategoryId" class="form-control" readonly/>
+    <br />
+    <label>Kategori Adı</label>
+    <input name="CategoryName" value="@Model.CategoryName" class="form-control" />
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</form>
