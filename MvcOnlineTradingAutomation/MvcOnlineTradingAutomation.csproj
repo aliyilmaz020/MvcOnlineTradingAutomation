@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\Mvc5Context.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -141,6 +142,14 @@
     <Compile Include="Migrations\202502131012484_mg2.cs" />
     <Compile Include="Migrations\202502131012484_mg2.Designer.cs">
       <DependentUpon>202502131012484_mg2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502131358055_mg3.cs" />
+    <Compile Include="Migrations\202502131358055_mg3.Designer.cs">
+      <DependentUpon>202502131358055_mg3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502131435350_mg4.cs" />
+    <Compile Include="Migrations\202502131435350_mg4.Designer.cs">
+      <DependentUpon>202502131435350_mg4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
@@ -232,6 +241,10 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\CreateProduct.cshtml" />
     <Content Include="Views\Product\EditProduct.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\EditDepartment.cshtml" />
+    <Content Include="Views\Department\DepartmentDetail.cshtml" />
+    <Content Include="Views\Department\DepartmentEmployeeSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -269,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502131012484_mg2.resx">
       <DependentUpon>202502131012484_mg2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502131358055_mg3.resx">
+      <DependentUpon>202502131358055_mg3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502131435350_mg4.resx">
+      <DependentUpon>202502131435350_mg4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

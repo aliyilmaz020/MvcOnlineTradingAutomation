@@ -1,0 +1,44 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<Department>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Departman Adı</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.DepartmentId</td>
+            <td>@x.DepartmentName</td>
+            <td><a href="/Department/RemoveDepartment/@x.DepartmentId" class="btn btn-danger">Sil</a> <a href="/Department/EditDepartment/@x.DepartmentId" class="btn btn-warning">Güncelle</a>
+            <a class="btn btn-secondary" href="/Department/DepartmentDetail/@x.DepartmentId">Detay</a></td>
+        </tr>
+    }
+</table>
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Departman</button>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Departman Ekleme</h3>
+            </div>
+            <form method="post" action="/Department/CreateDepartment">
+                <div class="modal-body">
+                    <label>Departman Adı</label>
+                    <input name="DepartmentName" class="form-control" required/>
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

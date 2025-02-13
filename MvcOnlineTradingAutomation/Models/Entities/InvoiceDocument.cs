@@ -18,6 +18,6 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         public decimal UnitPrice { get; set; }
         public decimal Total { get; set; }
         public int InvoiceId { get; set; }
-        public Invoice Invoice { get; set; }
+        public virtual Invoice Invoice { get; set; }
     }
 }

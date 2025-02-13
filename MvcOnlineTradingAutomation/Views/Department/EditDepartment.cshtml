@@ -1,0 +1,18 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Department
+@{
+    ViewBag.Title = "EditDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" name="DepartmentId" value="@Model.DepartmentId" class="form-control" readonly />
+    <br />
+    <label>Kategori Adı</label>
+    <input name="DepartmentName" value="@Model.DepartmentName" class="form-control" />
+    <br />
+    <label>Durum</label>
+    <input name="Status" value="@Model.Status.ToString()" class="form-control" />
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</form>
+
