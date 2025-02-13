@@ -1,0 +1,26 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Product
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<form method="post">
+    <input class="form-control" name="ProductName" placeholder="Ürün Adı" required />
+    <br />
+    <input class="form-control" name="ProductBrand" placeholder="Ürün Markası" required />
+    <br />
+    <input class="form-control" name="ProductStock" placeholder="Stok Sayısı" required />
+    <br />
+    <input class="form-control" name="ProductCashPrice" placeholder="Alış Fiyatı" required />
+    <br />
+    <input class="form-control" name="ProductSalePrice" placeholder="Satış Fiyatı" required />
+    <br />
+    <input class="form-control" name="ProductImage" placeholder="Fotoğraf" required />
+    <br />
+    <label>Kategori</label>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Value1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

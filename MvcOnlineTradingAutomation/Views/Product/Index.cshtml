@@ -1,0 +1,36 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Ürün Adı</th>
+        <th>Marka</th>
+        <th>Stok Sayısı</th>
+        <th>Alış Fiyatı</th>
+        <th>Satış Fiyatı</th>
+        <th>Kategori</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ProductId</td>
+            <td>@x.ProductName</td>
+            <td>@x.ProductBrand</td>
+            <td>@x.ProductStock</td>
+            <td>@x.ProductCashPrice ₺</td>
+            <td>@x.ProductSalePrice ₺</td>
+            <td>@x.Category.CategoryName</td>
+            <td><a href="/Product/RemoveProduct/@x.ProductId" class="btn btn-danger">Sil</a> <a href="/Product/EditProduct/@x.ProductId" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Product/CreateProduct" class="btn btn-primary">Yeni Ürün</a>
+
+

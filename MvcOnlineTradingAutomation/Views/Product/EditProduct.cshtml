@@ -1,0 +1,35 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Product
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<form method="post">
+    <label>Ürün Adı</label>
+    <input class="form-control" name="ProductName" value="@Model.ProductName" required />
+    <br />
+    <label>Ürün Markası</label>
+    <input class="form-control" name="ProductBrand" value="@Model.ProductBrand" required />
+    <br />
+    <label>Stok Sayısı</label>
+    <input class="form-control" name="ProductStock" value="@Model.ProductStock" required />
+    <br />
+    <label>Alış Fiyatı</label>
+    <input class="form-control" name="ProductCashPrice" value="@Model.ProductCashPrice" required />
+    <br />
+    <label>Satış Fiyatı</label>
+    <input class="form-control" name="ProductSalePrice" value="@Model.ProductSalePrice" required />
+    <br />
+    <label>Fotoğraf</label>
+    <input class="form-control" name="ProductImage" value="@Model.ProductImage" required />
+    <br />
+    <label>Kategori</label>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+    <br />
+    <label>Durum</label>
+    <input class="form-control" name="ProductStatus" value="@Model.ProductStatus.ToString()" required />
+    <br />
+    <input type="hidden" name="ProductId" value="@Model.ProductId" readonly />
+    <button class="btn btn-success">Güncelle</button>
+</form>

@@ -25,7 +25,7 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [StringLength(250)]
         public string ProductImage { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
         public ICollection<SaleOperation> SaleOperations { get; set; }
 
     }

@@ -128,9 +128,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\Mvc5Context.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502130959390_mg1.cs" />
+    <Compile Include="Migrations\202502130959390_mg1.Designer.cs">
+      <DependentUpon>202502130959390_mg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502131012484_mg2.cs" />
+    <Compile Include="Migrations\202502131012484_mg2.Designer.cs">
+      <DependentUpon>202502131012484_mg2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
@@ -171,6 +181,25 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="web\401.html" />
+    <Content Include="web\404.html" />
+    <Content Include="web\500.html" />
+    <Content Include="web\assets\demo\chart-area-demo.js" />
+    <Content Include="web\assets\demo\chart-bar-demo.js" />
+    <Content Include="web\assets\demo\chart-pie-demo.js" />
+    <Content Include="web\assets\demo\datatables-demo.js" />
+    <Content Include="web\assets\img\error-404-monochrome.svg" />
+    <Content Include="web\charts.html" />
+    <Content Include="web\css\styles.css" />
+    <Content Include="web\index.html" />
+    <Content Include="web\js\datatables-simple-demo.js" />
+    <Content Include="web\js\scripts.js" />
+    <Content Include="web\layout-sidenav-light.html" />
+    <Content Include="web\layout-static.html" />
+    <Content Include="web\login.html" />
+    <Content Include="web\password.html" />
+    <Content Include="web\register.html" />
+    <Content Include="web\tables.html" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -196,6 +225,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\CreateCategory.cshtml" />
+    <Content Include="Views\Category\EditCategory.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\CreateProduct.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,6 +262,14 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202502130959390_mg1.resx">
+      <DependentUpon>202502130959390_mg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502131012484_mg2.resx">
+      <DependentUpon>202502131012484_mg2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
