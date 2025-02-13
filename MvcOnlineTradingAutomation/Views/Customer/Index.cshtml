@@ -1,0 +1,62 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Müşteri ID</th>
+        <th>Müşteri Adı</th>
+        <th>Müşteri Soyadı</th>
+        <th>Müşteri Şehir</th>
+        <th>Müşteri E-Posta</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CustomerId</td>
+            <td>@x.CustomerName</td>
+            <td>@x.CustomerSurname</td>
+            <td>@x.CustomerCity</td>
+            <td>@x.CustomerMail</td>
+            <td><a href="/Customer/RemoveCustomer/@x.CustomerId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Customer/EditCustomer/@x.CustomerId" class="btn btn-secondary">Güncelle</a></td>
+            <td><a href="/Customer/Details/@x.CustomerId" class="btn btn-dark">Detaylar</a></td>
+            
+        </tr>
+    }
+</table>
+<a data-toggle="modal" data-target="#Modal1" class="btn btn-primary">Müşteri Ekle</a>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Müşteri Ekleme</h3>
+            </div>
+            <form method="post" action="/Customer/CreateCustomer">
+                <div class="modal-body">
+                    <label>Müşteri Adı</label>
+                    <input name="CustomerName" class="form-control" required />
+                    <br />
+                    <label>Müşteri Soyadı</label>
+                    <input name="CustomerSurname" class="form-control" required />
+                    <br />
+                    <label>Şehir</label>
+                    <input name="CustomerCity" class="form-control" required />
+                    <br />
+                    <label>E-Posta</label>
+                    <input name="CustomerMail" class="form-control" required />
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

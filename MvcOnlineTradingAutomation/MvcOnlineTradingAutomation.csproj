@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\Mvc5Context.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -150,6 +151,14 @@
     <Compile Include="Migrations\202502131435350_mg4.cs" />
     <Compile Include="Migrations\202502131435350_mg4.Designer.cs">
       <DependentUpon>202502131435350_mg4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502132341181_mg5.cs" />
+    <Compile Include="Migrations\202502132341181_mg5.Designer.cs">
+      <DependentUpon>202502132341181_mg5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502132349434_mg6.cs" />
+    <Compile Include="Migrations\202502132349434_mg6.Designer.cs">
+      <DependentUpon>202502132349434_mg6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
@@ -245,6 +254,7 @@
     <Content Include="Views\Department\EditDepartment.cshtml" />
     <Content Include="Views\Department\DepartmentDetail.cshtml" />
     <Content Include="Views\Department\DepartmentEmployeeSale.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502131435350_mg4.resx">
       <DependentUpon>202502131435350_mg4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132341181_mg5.resx">
+      <DependentUpon>202502132341181_mg5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132349434_mg6.resx">
+      <DependentUpon>202502132349434_mg6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
