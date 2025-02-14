@@ -21,7 +21,7 @@ namespace MvcOnlineTradingAutomation.Controllers
                 x.DepartmentName
             }).ToList();
             ViewBag.Departments = new SelectList(departments, "DepartmentId", "DepartmentName");
-            var employees = db.Employees.Where(x=>x.Status==true).ToList();
+            var employees = db.Employees.Where(x => x.Status == true).ToList();
             return View(employees);
         }
         [HttpGet]
@@ -40,9 +40,37 @@ namespace MvcOnlineTradingAutomation.Controllers
                     emp.DepartmentId = department.DepartmentId; // Foreign Key'i ata
                 }
             }
+            emp.Status = true;
             db.Employees.Add(emp);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult GetEmployee(int id)
+        {
+            List<SelectListItem> depart = db.Departments.Where(x => x.Status == true).Select(x => new SelectListItem
+            {
+                Text = x.DepartmentName,
+                Value = x.DepartmentId.ToString()
+            }).ToList();
+            ViewBag.Departs = depart;
+            var emp = db.Employees.Find(id);
+            return View(emp);
+        }
+        public ActionResult EditEmployee(Employee e)
+        {
+            var employee = db.Employees.Find(e.EmployeeId);
+            employee.EmployeeImage = e.EmployeeImage;
+            employee.EmployeeName = e.EmployeeName;
+            employee.EmployeeSurname = e.EmployeeSurname;
+            employee.DepartmentId = e.DepartmentId;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult EmployeeSale(int id)
+        {
+            ViewBag.Employee = db.Employees.Where(x => x.EmployeeId == id).Select(x => x.EmployeeName + " " + x.EmployeeSurname).FirstOrDefault();
+            var sales = db.SalesOperations.Where(x => x.EmployeeId == id).ToList();
+            return View(sales);
         }
     }
 }

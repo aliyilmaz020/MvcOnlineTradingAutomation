@@ -260,9 +260,10 @@
     <Content Include="Views\Department\DepartmentDetail.cshtml" />
     <Content Include="Views\Department\DepartmentEmployeeSale.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Customer\GetCustomer.cshtml" />
     <Content Include="Views\Customer\CustomerSale.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\GetEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -25,7 +25,7 @@
             <td>@x.EmployeeImage</td>
             <td>@x.Department.DepartmentName</td>
             <td><a href="/Employee/GetEmployee/@x.EmployeeId" class="btn btn-secondary">Güncelle</a></td>
-            <td><a href="/Employee/EmployeeSales/@x.EmployeeId" class="btn btn-dark">Satışlar</a></td>
+            <td><a href="/Employee/EmployeeSale/@x.EmployeeId" class="btn btn-dark">Satışlar</a></td>
 
         </tr>
     }
@@ -49,7 +49,7 @@
                     <input name="EmployeeImage" class="form-control" />
                     <br />
                     <label>Departman</label>
-                    @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, "Departman Seçiniz", new { @class = "form-control" })
+                    @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, new { @class = "form-control" })
                     <br />
                     <button class="btn btn-success">Kaydet</button>
                 </div>
@@ -57,5 +57,3 @@
         </div>
     </div>
 </div>
-
-

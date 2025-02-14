@@ -1,0 +1,26 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Employee
+@{
+    ViewBag.Title = "GetEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.EmployeeId)
+    @Html.LabelFor(x => x.EmployeeName, "Personel Adı")
+    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.EmployeeSurname, "Personel Soyadı")
+    @Html.TextBoxFor(x => x.EmployeeSurname, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.EmployeeImage, "Görsel")
+    @Html.TextBoxFor(x => x.EmployeeImage, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.DepartmentId, "Departman")
+    @Html.DropDownListFor(x => x.DepartmentId, ViewBag.Departs as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-default" style="background-color:#d55d08">Güncelle</button>
+}
+
+
