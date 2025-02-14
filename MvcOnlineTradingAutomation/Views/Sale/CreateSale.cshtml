@@ -16,15 +16,31 @@
     @Html.DropDownListFor(x => x.EmployeeId, ViewBag.Employee as List<SelectListItem>, new { @class = "form-control" })
     <br />
     <label>Adet</label>
-    <input type="text" name="Quantity" class="form-control" />
+    <input type="text" name="Quantity" oninput="formatQuantityInput(this)" class="form-control" />
     <br />
     <label>Fiyat</label>
-    <input type="text" name="Price" oninput="fixDecimalSeparator(this)" class="form-control" />
+    <input type="text" name="Price" oninput="formatPriceInput(this)" class="form-control" />
     <br />
     <button class="btn btn-success">Satışı Kaydet</button>
 </form>
 <script>
-    function fixDecimalSeparator(input) {
-        input.value = input.value.replace('.', ',');
+    function formatPriceInput(input) {
+        // Kullanıcının girişini temizle
+        input.value = input.value
+            .replace(/[^0-9,.]/g, '')   // Sadece 0-9, "," ve "." izin ver
+            .replace('.', ',');         // Noktayı virgüle çevir
+
+        // Eğer birden fazla virgül varsa, sadece ilkini tut
+        let parts = input.value.split(',');
+        if (parts.length > 2) {
+            input.value = parts[0] + ',' + parts.slice(1).join('');
+        }
+    }
+</script>
+<script>
+    function formatQuantityInput(input) {
+        // Kullanıcının girişini temizle
+        input.value = input.value
+            .replace(/[^0-9]/g, '')   // Sadece 0-9
     }
 </script>
