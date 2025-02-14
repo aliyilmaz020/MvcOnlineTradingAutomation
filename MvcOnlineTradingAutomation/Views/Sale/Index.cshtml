@@ -1,0 +1,41 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<SaleOperation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Müşteri</th>
+        <th>Personel</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Tutar</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.SaleOperationId</td>
+            <td>@x.Product.ProductName</td>
+            <td>@x.Customer.CustomerName @x.Customer.CustomerSurname</td>
+            <td>@x.Employee.EmployeeName @x.Employee.EmployeeSurname</td>
+            <td>@x.Quantity</td>
+            <td>@x.Price ₺</td>
+            <td>@x.Total ₺</td>
+            <td>@x.Date.ToShortDateString()</td>
+            <td>@x.Date.ToShortTimeString()</td>
+            <td><a href="/Sale/EditSale/@x.SaleOperationId" class="btn btn-default" style="background-color:darkturquoise">Düzenle</a></td>
+            <td><a href="/Sale/DetailSale/@x.SaleOperationId" class="btn btn-default" style="background-color:mediumslateblue">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Sale/CreateSale" class="btn btn-primary">Yeni Satış Yap</a>
+

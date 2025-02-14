@@ -1,0 +1,30 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.SaleOperation
+@{
+    ViewBag.Title = "CreateSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<form method="post" name="SaleCode">
+    <label>Ürün</label>
+    @Html.DropDownListFor(x => x.ProductId, ViewBag.Product as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    <label>Müşteri</label>
+    @Html.DropDownListFor(x => x.CustomerId, ViewBag.Customer as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.EmployeeId, ViewBag.Employee as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    <label>Adet</label>
+    <input type="text" name="Quantity" class="form-control" />
+    <br />
+    <label>Fiyat</label>
+    <input type="text" name="Price" oninput="fixDecimalSeparator(this)" class="form-control" />
+    <br />
+    <button class="btn btn-success">Satışı Kaydet</button>
+</form>
+<script>
+    function fixDecimalSeparator(input) {
+        input.value = input.value.replace('.', ',');
+    }
+</script>
