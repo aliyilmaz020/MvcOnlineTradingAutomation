@@ -37,7 +37,7 @@ namespace MvcOnlineTradingAutomation.Controllers
         public ActionResult GetCustomer(int id)
         {
             var customer = db.Customers.Find(id);
-            return View("GetCustomer",customer);
+            return View("GetCustomer", customer);
         }
         public ActionResult EditCustomer(Customer c)
         {
@@ -53,6 +53,11 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult CustomerSale(int id)
+        {
+            ViewBag.Customer = db.Customers.Where(x => x.CustomerId == id).Select(x => x.CustomerName + " " + x.CustomerSurname).FirstOrDefault();
+            var values = db.SalesOperations.Where(x => x.CustomerId == id).ToList();
+            return View(values);
+        }
     }
 }
