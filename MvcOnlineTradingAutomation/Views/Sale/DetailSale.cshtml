@@ -1,0 +1,40 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<SaleOperation>
+
+@{
+    ViewBag.Title = "DetailSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Detayı</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Müşteri</th>
+        <th>Personel</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Tutar</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.SaleOperationId</td>
+            <td>@x.Product.ProductName</td>
+            <td>@x.Customer.CustomerName @x.Customer.CustomerSurname</td>
+            <td>@x.Employee.EmployeeName @x.Employee.EmployeeSurname</td>
+            <td>@x.Quantity</td>
+            <td>@x.Price</td>
+            <td>@x.Total</td>
+            <td>@x.Date.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+<button class="btn btn-outline-dark">Yazdır</button>
+

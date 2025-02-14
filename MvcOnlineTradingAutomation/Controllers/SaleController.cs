@@ -84,5 +84,10 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult DetailSale(int id)
+        {
+            var values = db.SalesOperations.Where(x => x.SaleOperationId == id).ToList();
+            return View(values);
+        }
     }
 }
