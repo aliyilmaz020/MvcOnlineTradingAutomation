@@ -1,0 +1,61 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>Personel ID</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Görsel</th>
+        <th>Departman</th>
+        <th>Güncelle</th>
+        <th>Satışlar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.EmployeeId</td>
+            <td>@x.EmployeeName</td>
+            <td>@x.EmployeeSurname</td>
+            <td>@x.EmployeeImage</td>
+            <td>@x.Department.DepartmentName</td>
+            <td><a href="/Employee/GetEmployee/@x.EmployeeId" class="btn btn-secondary">Güncelle</a></td>
+            <td><a href="/Employee/EmployeeSales/@x.EmployeeId" class="btn btn-dark">Satışlar</a></td>
+
+        </tr>
+    }
+</table>
+<a data-toggle="modal" data-target="#Modal1" class="btn btn-primary">Personel Ekle</a>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Personel Ekleme</h3>
+            </div>
+            <form method="post" action="/Employee/CreateEmployee">
+                <div class="modal-body">
+                    <label>Müşteri Adı</label>
+                    <input name="EmployeeName" class="form-control" />
+                    <br />
+                    <label>Müşteri Soyadı</label>
+                    <input name="EmployeeSurname" class="form-control" />
+                    <br />
+                    <label>Görsel</label>
+                    <input name="EmployeeImage" class="form-control" />
+                    <br />
+                    <label>Departman</label>
+                    @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, "Departman Seçiniz", new { @class = "form-control" })
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -22,6 +22,7 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         public string EmployeeImage { get; set; }
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
+        public bool Status { get; set; }
         public ICollection<SaleOperation> SaleOperations { get; set; }
 
 

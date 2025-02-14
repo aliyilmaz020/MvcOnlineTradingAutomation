@@ -131,6 +131,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +160,10 @@
     <Compile Include="Migrations\202502132349434_mg6.cs" />
     <Compile Include="Migrations\202502132349434_mg6.Designer.cs">
       <DependentUpon>202502132349434_mg6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502141345243_mg7.cs" />
+    <Compile Include="Migrations\202502141345243_mg7.Designer.cs">
+      <DependentUpon>202502141345243_mg7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
@@ -257,6 +262,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\GetCustomer.cshtml" />
     <Content Include="Views\Customer\CustomerSale.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502132349434_mg6.resx">
       <DependentUpon>202502132349434_mg6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502141345243_mg7.resx">
+      <DependentUpon>202502141345243_mg7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
