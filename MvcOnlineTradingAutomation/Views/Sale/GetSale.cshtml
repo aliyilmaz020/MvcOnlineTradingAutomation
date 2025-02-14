@@ -1,0 +1,51 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.SaleOperation
+@{
+    ViewBag.Title = "GetSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditSale", "Sale", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.SaleOperationId)
+    @Html.LabelFor(x => x.ProductId, "Ürün")
+    @Html.DropDownListFor(x => x.ProductId, ViewBag.Product as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.CustomerId, "Müşteri")
+    @Html.DropDownListFor(x => x.CustomerId, ViewBag.Customer as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.EmployeeId, "Personel")
+    @Html.DropDownListFor(x => x.EmployeeId, ViewBag.Employee as List<SelectListItem>, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Quantity, "Adet")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control",@oninput= "formatQuantityInput(this)" })
+    <br />
+    @Html.LabelFor(x => x.Price, "Fiyat")
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control",@oninput= "formatPriceInput(this)" })
+    <br />
+    <button class="btn btn-outline-dark" style="background-color:cornflowerblue">Güncelle</button>
+}
+<script>
+    function formatPriceInput(input) {
+        // Kullanıcının girişini temizle
+        input.value = input.value
+            .replace(/[^0-9,.]/g, '')   // Sadece 0-9, "," ve "." izin ver
+            .replace('.', ',');         // Noktayı virgüle çevir
+
+        // Eğer birden fazla virgül varsa, sadece ilkini tut
+        let parts = input.value.split(',');
+        if (parts.length > 2) {
+            input.value = parts[0] + ',' + parts.slice(1).join('');
+        }
+    }
+</script>
+<script>
+    function formatQuantityInput(input) {
+        // Kullanıcının girişini temizle
+        input.value = input.value
+            .replace(/[^0-9]/g, '')   // Sadece 0-9
+    }
+</script>
+
