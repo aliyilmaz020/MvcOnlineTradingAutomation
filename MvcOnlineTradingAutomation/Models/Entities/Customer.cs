@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace MvcOnlineTradingAutomation.Models.Entities
 {
@@ -13,10 +9,11 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [Key]
         public int CustomerId { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(30,ErrorMessage ="En fazla 30 karakter giriniz.")]
         public string CustomerName { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
+        [Required(ErrorMessage ="Bu alan boş geçilemez!")]
         public string CustomerSurname { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(13)]

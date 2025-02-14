@@ -1,9 +1,6 @@
 ﻿using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
@@ -34,6 +31,25 @@ namespace MvcOnlineTradingAutomation.Controllers
         {
             var customer = db.Customers.Find(id);
             customer.Status = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult GetCustomer(int id)
+        {
+            var customer = db.Customers.Find(id);
+            return View("GetCustomer",customer);
+        }
+        public ActionResult EditCustomer(Customer c)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("GetCustomer");
+            }
+            var customer = db.Customers.Find(c.CustomerId);
+            customer.CustomerName = c.CustomerName;
+            customer.CustomerSurname = c.CustomerSurname;
+            customer.CustomerMail = c.CustomerMail;
+            customer.CustomerCity = c.CustomerCity;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
