@@ -29,7 +29,7 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         public string InvoiceDelivery { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        public string InvoiceRecever { get; set; }
+        public string InvoiceRecevier { get; set; }
         public bool InvoiceStatus { get; set; }
         public decimal Total { get; set; }
 
