@@ -505,6 +505,7 @@
     <Content Include="Views\Sale\CreateSale.cshtml" />
     <Content Include="Views\Sale\GetSale.cshtml" />
     <Content Include="Views\Sale\DetailSale.cshtml" />
+    <Content Include="Views\Product\ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
