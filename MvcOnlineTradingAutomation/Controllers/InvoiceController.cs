@@ -48,5 +48,27 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult DetailInvoice(int id)
+        {
+            var invoice = db.Invoices.Where(x => x.InvoiceId == id).Select(x => x.InvoiceSerial + "/" + x.InvoiceSequenceNum).FirstOrDefault();
+            ViewBag.Invoice = invoice;
+            ViewBag.InvoiceId = id;
+            var document = db.InvoicesDocument.Where(x => x.InvoiceId == id).ToList();
+            return View(document);
+        }
+        [HttpGet]
+        public ActionResult CreateInvoiceDocument(int id)
+        {
+            ViewBag.InvoiceId = id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateInvoiceDocument(InvoiceDocument doc)
+        {
+            doc.Total = doc.UnitPrice * doc.Amount;
+            db.InvoicesDocument.Add(doc);
+            db.SaveChanges();
+            return RedirectToAction($"DetailInvoice/{doc.InvoiceId}");
+        }
     }
 }

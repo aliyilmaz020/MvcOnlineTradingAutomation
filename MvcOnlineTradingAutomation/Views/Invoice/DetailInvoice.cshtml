@@ -1,0 +1,33 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<InvoiceDocument>
+@{
+    ViewBag.Title = "DetailInvoice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Kalemleri Sayfası</h2>
+<br />
+<ol class="breadcrumb mb-4" style="background-color:lightgrey;height:auto; padding:5px; font-size:22px;">
+    <li class="breadcrumb-item active">Seri/Sıra No: @ViewBag.Invoice</li>
+</ol>
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Açıklama</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Tutar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.InvoiceDocumentId</td>
+            <td>@x.Description</td>
+            <td>@x.Amount</td>
+            <td>@x.UnitPrice</td>
+            <td>@x.Total</td>
+        </tr>
+    }
+</table>
+<a href="/Invoice/CreateInvoiceDocument/@ViewBag.InvoiceId" class="btn btn-default" style="background-color:salmon;">Yeni Kalem Girişi</a>

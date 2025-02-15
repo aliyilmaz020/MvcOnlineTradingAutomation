@@ -513,6 +513,8 @@
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Invoice\Index.cshtml" />
     <Content Include="Views\Invoice\GetInvoice.cshtml" />
+    <Content Include="Views\Invoice\DetailInvoice.cshtml" />
+    <Content Include="Views\Invoice\CreateInvoiceDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
