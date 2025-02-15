@@ -1,0 +1,40 @@
+﻿@using MvcOnlineTradingAutomation.Models.Entities
+@model List<Invoice>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Fatura ID</th>
+        <th>Seri-Sıra No</th>
+        <th>Vergi Dairesi</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Toplam</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+        @*<th>İşlemler</th>*@
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.InvoiceId</td>
+            <td>@x.InvoiceSerial-@x.InvoiceSequenceNum</td>
+            <td>@x.InvoiceTaxOffice</td>
+            <td>@x.InvoiceDelivery</td>
+            <td>@x.InvoiceRecever</td>
+            <td>@x.InvoiceDate.ToShortDateString()</td>
+            <td>@x.InvoiceTime</td>
+            <td>@x.Total ₺</td>
+            <td><a href="/Invoice/EditInvoice/@x.InvoiceId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Invoice/DetailInvoice/@x.InvoiceId" class="btn btn-light" style="background-color:cadetblue">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Product/CreateProduct" class="btn btn-primary">Yeni Fatura</a>
+

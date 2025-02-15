@@ -21,7 +21,9 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(60)]
         public string InvoiceTaxOffice { get; set; }
-        public DateTime InvoiceTime { get; set; }
+        [Column(TypeName = "char")]
+        [StringLength(5)]
+        public string InvoiceTime { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string InvoiceDelivery { get; set; }
@@ -29,6 +31,8 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [StringLength(30)]
         public string InvoiceRecever { get; set; }
         public bool InvoiceStatus { get; set; }
+        public decimal Total { get; set; }
+
         public ICollection<InvoiceDocument> InvoiceDocuments { get; set; }
     }
 }
