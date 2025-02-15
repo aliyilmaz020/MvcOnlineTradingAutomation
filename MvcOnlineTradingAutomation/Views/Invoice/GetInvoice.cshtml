@@ -1,0 +1,36 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Invoice
+@{
+    ViewBag.Title = "GetInvoice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditInvoice", "Invoice", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.InvoiceId)
+    @Html.LabelFor(x => x.InvoiceSerial, "Seri")
+    @Html.TextBoxFor(x => x.InvoiceSerial, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceSequenceNum, "Sıra No")
+    @Html.TextBoxFor(x => x.InvoiceSequenceNum, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceTaxOffice, "Vergi Dairesi")
+    @Html.TextBoxFor(x => x.InvoiceTaxOffice, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceDelivery, "Teslim Eden")
+    @Html.TextBoxFor(x => x.InvoiceDelivery, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceRecevier, "Teslim Alan")
+    @Html.TextBoxFor(x => x.InvoiceRecevier, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceDate, "Tarih")
+    @Html.TextBoxFor(x => x.InvoiceDate, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceTime, "Saat")
+    @Html.TextBoxFor(x => x.InvoiceTime, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-dark" style="background-color:cornflowerblue">Güncelle</button>
+}
+

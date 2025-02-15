@@ -25,7 +25,26 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpPost]
         public ActionResult CreateInvoice(Invoice invoice)
         {
+            invoice.InvoiceStatus = true;
             db.Invoices.Add(invoice);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult GetInvoice(int id)
+        {
+            var invoice = db.Invoices.Find(id);
+            return View(invoice);
+        }
+        public ActionResult EditInvoice(Invoice i)
+        {
+            var value = db.Invoices.Find(i.InvoiceId);
+            value.InvoiceSequenceNum = i.InvoiceSequenceNum;
+            value.InvoiceSerial = i.InvoiceSerial;
+            value.InvoiceDate = i.InvoiceDate;
+            value.InvoiceTime = i.InvoiceTime;
+            value.InvoiceTaxOffice = i.InvoiceTaxOffice;
+            value.InvoiceDelivery = i.InvoiceDelivery;
+            value.InvoiceRecevier = i.InvoiceRecevier;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

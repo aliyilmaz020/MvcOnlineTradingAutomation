@@ -512,6 +512,7 @@
     <Content Include="Views\Sale\DetailSale.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Invoice\GetInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
