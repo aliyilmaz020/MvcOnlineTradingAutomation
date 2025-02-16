@@ -176,6 +176,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
+    <Compile Include="Models\Entities\Enums.cs" />
+    <Compile Include="Models\Entities\Detail.cs" />
     <Compile Include="Models\Entities\Expense.cs" />
     <Compile Include="Models\Entities\Invoice.cs" />
     <Compile Include="Models\Entities\Category.cs" />

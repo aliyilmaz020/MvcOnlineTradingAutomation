@@ -23,7 +23,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             List<SelectListItem> product = db.Products.Where(x => x.ProductStatus == true).Select(x => new SelectListItem
             {
                 Value = x.ProductId.ToString(),
-                Text = x.ProductName
+                Text = x.ProductName + "/" + x.ProductSalePrice.ToString() +" ₺" 
             }).ToList();
             ViewBag.Product = product;
             List<SelectListItem> customer = db.Customers.Where(x => x.Status == true).Select(x => new SelectListItem
