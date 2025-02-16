@@ -19,5 +19,6 @@ namespace MvcOnlineTradingAutomation.Context
         public DbSet<InvoiceDocument> InvoicesDocument { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<SaleOperation> SalesOperations { get; set; }
+        public DbSet<Detail> Details { get; set; }
     }
 }

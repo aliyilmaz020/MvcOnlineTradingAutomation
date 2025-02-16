@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvcOnlineTradingAutomation.Context;
+using MvcOnlineTradingAutomation.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,14 @@ namespace MvcOnlineTradingAutomation.Controllers
 {
     public class ProductDetailController : Controller
     {
+        Mvc5Context db = new Mvc5Context();
         // GET: ProductDetail
         public ActionResult Index()
         {
-            return View();
+            Enums enums = new Enums();
+            enums.Products = db.Products.Where(x=>x.ProductId==1).ToList();
+            enums.Details = db.Details.Where(y=>y.DetailId==1).ToList();
+            return View(enums);
         }
     }
 }
