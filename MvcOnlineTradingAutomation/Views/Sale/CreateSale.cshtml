@@ -5,7 +5,7 @@
 }
 
 <br />
-<form method="post" name="SaleCode">
+<form method="post">
     <label>Ürün</label>
     @Html.DropDownListFor(x => x.ProductId, ViewBag.Product as List<SelectListItem>, new { @class = "form-control" })
     <br />
@@ -17,13 +17,13 @@
     <br />
     <label>Adet</label>
     <input type="text" name="Quantity" oninput="formatQuantityInput(this)" class="form-control" />
-    <br />
+    @*<br />
     <label>Fiyat</label>
-    <input type="text" name="Price" oninput="formatPriceInput(this)" class="form-control" />
+    <input type="text" name="Price" oninput="formatPriceInput(this)" class="form-control" />*@
     <br />
     <button class="btn btn-success">Satışı Kaydet</button>
 </form>
-<script>
+@*<script>
     function formatPriceInput(input) {
         // Kullanıcının girişini temizle
         input.value = input.value
@@ -36,7 +36,7 @@
             input.value = parts[0] + ',' + parts.slice(1).join('');
         }
     }
-</script>
+</script>*@
 <script>
     function formatQuantityInput(input) {
         // Kullanıcının girişini temizle

@@ -43,6 +43,8 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpPost]
         public ActionResult CreateSale(SaleOperation sale)
         {
+            int id = sale.ProductId;
+            sale.Price = db.Products.Where(x => x.ProductStatus == true && x.ProductId == id).Select(x => x.ProductSalePrice).FirstOrDefault();
             sale.Total = sale.Price * sale.Quantity;
             sale.Date = DateTime.Now;
             db.SalesOperations.Add(sale);
