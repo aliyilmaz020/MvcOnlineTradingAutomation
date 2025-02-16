@@ -1,0 +1,39 @@
+﻿@model List<MvcOnlineTradingAutomation.Models.Entities.Customer>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Müşteri Tablosu</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-head-fixed text-nowrap" >
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Şehir</th>
+                            <th>E-Posta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int count = 0;}
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@{count++;} @count.</td>
+                                <td>@x.CustomerName</td>
+                                <td>@x.CustomerSurname</td>
+                                <td>@x.CustomerCity</td>
+                                <td>@x.CustomerMail</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using MvcOnlineTradingAutomation.Context;
+using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,58 @@ namespace MvcOnlineTradingAutomation.Controllers
                 ViewBag.d16 = db.SalesOperations.Where(x => x.Date.Year == t.Year && x.Date.Month == t.Month && x.Date.Day == t.Day).Sum(x => x.Total).ToString();
             }
             return View();
+        }
+        public ActionResult SimpleTables()
+        {
+            var query = db.Customers.Where(x=>x.Status==true).GroupBy(x => x.CustomerCity).Select(y => new ClassGroup
+            {
+                City = y.Key,
+                Count = y.Count()
+            }).OrderByDescending(x=>x.Count).ToList();
+            return View(query);
+        }
+        public PartialViewResult Category()
+        {
+            var total = db.Products.Where(x => x.ProductStatus == true).GroupBy(x => x.Category.CategoryName).Sum(x => x.Count());
+            ViewBag.Total = total;
+            List<SelectListItem> values = db.Products.Where(x => x.ProductStatus == true).GroupBy(x => x.Category.CategoryName).Select(x => new SelectListItem
+            {
+              Text = x.Key,
+              Value = x.Count().ToString()
+            }).OrderByDescending(x=>x.Value).ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult Department()
+        {
+            var total = db.Employees.Where(x => x.Status == true).GroupBy(x => x.Department.DepartmentName).Sum(x=>x.Count());
+            ViewBag.Total = total;
+            List<SelectListItem> values = db.Employees.Where(x => x.Status == true).GroupBy(x => x.Department.DepartmentName).Select(x => new SelectListItem
+            {
+                Text = x.Key,
+                Value = x.Count().ToString()
+            }).OrderByDescending(x => x.Value).ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult Customer()
+        {
+            var customers = db.Customers.Where(x => x.Status == true).ToList();
+            return PartialView(customers);
+        }
+        public PartialViewResult Product()
+        {
+            var products = db.Products.Where(x => x.ProductStatus == true).ToList();
+            return PartialView(products);
+        }
+        public PartialViewResult Brand()
+        {
+            var total = db.Products.Where(x => x.ProductStatus == true).GroupBy(x => x.ProductBrand).Sum(x=>x.Count());
+            ViewBag.Total = total;
+            List<SelectListItem> brands = db.Products.Where(x => x.ProductStatus == true).GroupBy(x => x.ProductBrand).Select(x => new SelectListItem
+            {
+                Text = x.Key,
+                Value = x.Count().ToString()
+            }).OrderByDescending(x=>x.Value).Take(6).ToList();
+            return PartialView(brands);
         }
     }
 }

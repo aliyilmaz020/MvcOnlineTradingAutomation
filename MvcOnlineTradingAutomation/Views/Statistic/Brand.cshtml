@@ -1,0 +1,39 @@
+﻿@model List<SelectListItem>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Marka/Ürün Sayısı</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Marka</th>
+                    <th>Progress</th>
+                    <th style="width: 40px">Ürün Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int count = 0;
+                    double per = 0;}
+                @foreach (var x in Model)
+                {
+                    { per = int.Parse(x.Value) * 100 / ViewBag.Total * 1.0; }
+                    <tr>
+                        <td>@{count++;}@count. </td>
+                        <td>@x.Text</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" title="@per%" style="width: @per%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-danger">@x.Value</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

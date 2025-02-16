@@ -1,0 +1,31 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Customer
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Müşteri Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.CustomerId)
+    @Html.LabelFor(x => x.CustomerName, "Müşteri Adı")
+    @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CustomerName, "", new { @class = "color:red;" })
+    <br />
+    @Html.LabelFor(x => x.CustomerSurname, "Müşteri Soyadı")
+    @Html.TextBoxFor(x => x.CustomerSurname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CustomerSurname, "", new { @class = "color=red;" })
+    <br />
+    @Html.LabelFor(x => x.CustomerCity, "Şehir")
+    @Html.TextBoxFor(x => x.CustomerCity, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CustomerCity, "", new { @class = "color=red;" })
+    <br />
+    @Html.LabelFor(x => x.CustomerMail, "E-Posta")
+    @Html.TextBoxFor(x => x.CustomerMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CustomerMail, "", new { @class = "color=red;" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}
+

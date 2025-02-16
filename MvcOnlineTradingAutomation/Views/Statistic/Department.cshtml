@@ -1,0 +1,43 @@
+﻿@model List<SelectListItem>
+
+<div class="card-body p-0">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Departman</th>
+                <th>Progress</th>
+                <th style="width: 40px">Personel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int count = 0;
+                string color = "";
+                double per = 0;}
+            @foreach (var x in Model)
+            {
+                { per = int.Parse(x.Value) * 100 / ViewBag.Total * 1.0; }
+                if (count % 2 == 1)
+                {
+                    color = "bg-blue";
+                }
+                if (count % 2 == 0)
+                {
+                    color = "bg-purple";
+
+                }
+                <tr>
+                    <td>@{count++;} @count.</td>
+                    <td>@x.Text</td>
+                    <td>
+                        <div class="progress progress-xs" style="margin-top:10px;">
+                            <div class="progress-bar @color" title="@per%" style="width: @per%"></div>
+                        </div>
+                    </td>
+                    <td><span class="badge @color">@x.Value</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

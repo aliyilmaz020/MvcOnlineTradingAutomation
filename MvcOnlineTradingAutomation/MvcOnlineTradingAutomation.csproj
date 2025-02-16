@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
+    <Compile Include="Models\Entities\ClassGroup.cs" />
     <Compile Include="Models\Entities\Enums.cs" />
     <Compile Include="Models\Entities\Detail.cs" />
     <Compile Include="Models\Entities\Expense.cs" />
@@ -2815,6 +2816,13 @@
     <Content Include="thumber\scss\_site-navbar.scss" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\Statistic\SimpleTables.cshtml" />
+    <Content Include="Views\Customer\GetCustomer.cshtml" />
+    <Content Include="Views\Statistic\Category.cshtml" />
+    <Content Include="Views\Statistic\Department.cshtml" />
+    <Content Include="Views\Statistic\Customer.cshtml" />
+    <Content Include="Views\Statistic\Product.cshtml" />
+    <Content Include="Views\Statistic\Brand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,43 @@
+﻿@model List<SelectListItem>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Kategori Adı</th>
+            <th>Bar</th>
+            <th style="width: 40px">Adet</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int count = 0;
+            string color = "";
+            double per = 0;}
+        @foreach (var x in Model)
+        {
+            { per = int.Parse(x.Value) * 100 / ViewBag.Total * 1.0; }
+            <tr>
+                <td>
+                    @{count++;}@count.
+                </td>
+                <td>@x.Text</td>
+                <td>
+                    @if (count % 2 ==1)
+                    {
+                        color = "bg-gray";
+                    }
+                    @if (count % 2 == 0)
+                    {
+                        color = "bg-purple";
+
+                    }
+                    <div class="progress progress-xs">
+                        <div class="progress-bar @color" title="@per.ToString()%" style="width: @per.ToString()%"></div>
+                    </div>
+                </td>
+                <td><span class="badge @color">@x.Value</span></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
