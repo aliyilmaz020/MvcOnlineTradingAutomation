@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
@@ -28,6 +29,25 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.Customers.Add(c);
             db.SaveChanges();
             return PartialView();
+        }
+        [HttpGet]
+        public ActionResult CustomerLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CustomerLogin(Customer c)
+        {
+            string mail = c.CustomerMail;
+            string password = c.CustomerPassword;
+            bool isLogin = db.Customers.Any(x => x.CustomerMail == mail && x.CustomerPassword == password);
+            if (isLogin)
+            {
+                FormsAuthentication.SetAuthCookie(mail,false);
+                Session["CustomerMail"] = mail;
+                return RedirectToAction("Index", "CustomerPanel");
+            }
+            return View();
         }
     }
 }
