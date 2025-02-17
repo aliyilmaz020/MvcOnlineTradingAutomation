@@ -17,6 +17,13 @@
     @Html.LabelFor(x => x.EmployeeImage, "Görsel")
     @Html.TextBoxFor(x => x.EmployeeImage, new { @class = "form-control" })
     <br />
+    @Html.LabelFor(x => x.EmployeeCity, "Şehir")
+    @Html.TextBoxFor(x => x.EmployeeCity, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.EmployeePhone, "Telefon")
+    @Html.TextBoxFor(x => x.EmployeePhone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.EmployeePhone)
+    <br />
     @Html.LabelFor(x => x.DepartmentId, "Departman")
     @Html.DropDownListFor(x => x.DepartmentId, ViewBag.Departs as List<SelectListItem>, new { @class = "form-control" })
     <br />

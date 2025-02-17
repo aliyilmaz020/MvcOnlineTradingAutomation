@@ -58,11 +58,17 @@ namespace MvcOnlineTradingAutomation.Controllers
         }
         public ActionResult EditEmployee(Employee e)
         {
+            if(!ModelState.IsValid)
+            {
+                return RedirectToAction($"GetEmployee/{e.EmployeeId}");
+            }
             var employee = db.Employees.Find(e.EmployeeId);
             employee.EmployeeImage = e.EmployeeImage;
             employee.EmployeeName = e.EmployeeName;
             employee.EmployeeSurname = e.EmployeeSurname;
             employee.DepartmentId = e.DepartmentId;
+            employee.EmployeePhone = e.EmployeePhone;
+            employee.EmployeeCity = e.EmployeeCity;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -71,6 +77,11 @@ namespace MvcOnlineTradingAutomation.Controllers
             ViewBag.Employee = db.Employees.Where(x => x.EmployeeId == id).Select(x => x.EmployeeName + " " + x.EmployeeSurname).FirstOrDefault();
             var sales = db.SalesOperations.Where(x => x.EmployeeId == id).ToList();
             return View(sales);
+        }
+        public ActionResult EmployeeList()
+        {
+            var employees = db.Employees.Where(x => x.Status == true).ToList();
+            return View(employees);
         }
     }
 }

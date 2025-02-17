@@ -23,6 +23,12 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
         public bool Status { get; set; }
+        [Column(TypeName = "Varchar")]
+        [StringLength(13)]
+        public string EmployeeCity { get; set; }
+        [Column(TypeName = "Varchar")]
+        [StringLength(10,ErrorMessage ="Lütfen 10 Karakter Giriniz.")]
+        public string EmployeePhone { get; set; }
         public ICollection<SaleOperation> SaleOperations { get; set; }
 
 

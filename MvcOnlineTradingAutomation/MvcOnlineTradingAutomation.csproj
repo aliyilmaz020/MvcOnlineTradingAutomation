@@ -174,6 +174,10 @@
     <Compile Include="Migrations\202502151400144_mg8.Designer.cs">
       <DependentUpon>202502151400144_mg8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502171317065_employeenum.cs" />
+    <Compile Include="Migrations\202502171317065_employeenum.Designer.cs">
+      <DependentUpon>202502171317065_employeenum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\ClassGroup.cs" />
@@ -2823,6 +2827,7 @@
     <Content Include="Views\Statistic\Customer.cshtml" />
     <Content Include="Views\Statistic\Product.cshtml" />
     <Content Include="Views\Statistic\Brand.cshtml" />
+    <Content Include="Views\Employee\EmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2878,6 +2883,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502151400144_mg8.resx">
       <DependentUpon>202502151400144_mg8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502171317065_employeenum.resx">
+      <DependentUpon>202502171317065_employeenum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

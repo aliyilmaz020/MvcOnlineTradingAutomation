@@ -22,7 +22,7 @@
             <td>@x.EmployeeId</td>
             <td>@x.EmployeeName</td>
             <td>@x.EmployeeSurname</td>
-            <td>@x.EmployeeImage</td>
+            <td><img src="@x.EmployeeImage" class="img-circle img-fluid" height="100" width="100" /></td>
             <td>@x.Department.DepartmentName</td>
             <td><a href="/Employee/GetEmployee/@x.EmployeeId" class="btn btn-secondary">Güncelle</a></td>
             <td><a href="/Employee/EmployeeSale/@x.EmployeeId" class="btn btn-dark">Satışlar</a></td>
@@ -50,6 +50,12 @@
                     <br />
                     <label>Departman</label>
                     @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, new { @class = "form-control" })
+                    <br />
+                    <label>Şehir</label>
+                    <input name="EmployeeCity" class="form-control" />
+                    <br />
+                    <label>Telefon Numarası</label>
+                    <input name="EmployeePhone" class="form-control" />
                     <br />
                     <button class="btn btn-success">Kaydet</button>
                 </div>
