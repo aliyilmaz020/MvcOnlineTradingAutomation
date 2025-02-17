@@ -139,6 +139,7 @@
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="Controllers\ToDoListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,6 +179,10 @@
     <Compile Include="Migrations\202502171317065_employeenum.Designer.cs">
       <DependentUpon>202502171317065_employeenum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502171359459_ToDoMg.cs" />
+    <Compile Include="Migrations\202502171359459_ToDoMg.Designer.cs">
+      <DependentUpon>202502171359459_ToDoMg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\ClassGroup.cs" />
@@ -192,6 +197,7 @@
     <Compile Include="Models\Entities\InvoiceDocument.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\SaleOperation.cs" />
+    <Compile Include="Models\Entities\ToDoList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2828,6 +2834,7 @@
     <Content Include="Views\Statistic\Product.cshtml" />
     <Content Include="Views\Statistic\Brand.cshtml" />
     <Content Include="Views\Employee\EmployeeList.cshtml" />
+    <Content Include="Views\ToDoList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2886,6 +2893,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502171317065_employeenum.resx">
       <DependentUpon>202502171317065_employeenum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502171359459_ToDoMg.resx">
+      <DependentUpon>202502171359459_ToDoMg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

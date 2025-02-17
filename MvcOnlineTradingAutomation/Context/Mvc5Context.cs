@@ -20,5 +20,6 @@ namespace MvcOnlineTradingAutomation.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<SaleOperation> SalesOperations { get; set; }
         public DbSet<Detail> Details { get; set; }
+        public DbSet<ToDoList> ToDoLists { get; set; }
     }
 }
