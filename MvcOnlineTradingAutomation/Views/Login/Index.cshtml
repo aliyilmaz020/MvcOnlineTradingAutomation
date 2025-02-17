@@ -128,24 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- register form popup-->
     <div class="pop-up">
         <div id="small-dialog2" class="mfp-hide book-form">
-            <div class="login-form login-form-left">
-                <div class="agile-row">
-                    <h3>Yeni Müşteri Girişi</h3>
-                    <div class="login-agileits-top">
-                        <form action="#" method="post">
-                            <input type="text" class="name" name="CustomerName" Placeholder="Adınız" required="" />
-                            <input type="text" class="name" name="CustomerSurname" Placeholder="Soyadınız" required="" />
-                            <input type="text" class="name" name="CustomerCity" Placeholder="Şehir" required="" />
-                            <input type="email" class="mail" name="CustomerMail" Placeholder="E-Posta Adresi" required="" />
-                            <input type="password" class="password" name="password" Placeholder="Şifre" required="" />
-                            <div class="login-check">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Kuralları okudum &amp; Onaylıyorum</label>
-                            </div>
-                            <input type="submit" value="Kaydol">
-                        </form>
-                    </div>
-                </div>
-            </div>
+            @Html.Action("Partial1","Login")
         </div>
     </div>
     <!-- //register form popup-->

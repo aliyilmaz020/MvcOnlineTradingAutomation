@@ -21,6 +21,9 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
         public string CustomerMail { get; set; }
+        [Column(TypeName ="Varchar")]
+        [StringLength(20)]
+        public string CustomerPassword { get; set; }
         public bool Status { get; set; }
         public ICollection<SaleOperation> SaleOperations { get; set; }
 
