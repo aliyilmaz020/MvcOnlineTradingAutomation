@@ -4,6 +4,7 @@ namespace MvcOnlineTradingAutomation.Controllers
 {
     public class CustomerPanelController : Controller
     {
+        [Authorize]
         // GET: CustomerPanel
         public ActionResult Index()
         {
