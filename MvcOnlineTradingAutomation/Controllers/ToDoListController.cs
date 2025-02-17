@@ -17,7 +17,9 @@ namespace MvcOnlineTradingAutomation.Controllers
             ViewBag.d2 = db.Products.Where(x=>x.ProductStatus==true).Count().ToString();
             ViewBag.d3 = db.Categories.Count().ToString();
             ViewBag.d4 = db.Employees.Where(x=>x.Status==true).Select(x=>x.EmployeeCity).Distinct().Count().ToString();
-            return View();
+
+            var lists = db.ToDoLists.ToList();
+            return View(lists);
         }
     }
 }
