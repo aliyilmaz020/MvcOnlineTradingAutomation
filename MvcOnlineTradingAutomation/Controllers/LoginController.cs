@@ -47,7 +47,7 @@ namespace MvcOnlineTradingAutomation.Controllers
                 Session["CustomerMail"] = mail;
                 return RedirectToAction("Index", "CustomerPanel");
             }
-            return View();
+            return RedirectToAction("Index","Login");
         }
     }
 }
