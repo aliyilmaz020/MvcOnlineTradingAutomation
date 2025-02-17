@@ -39,10 +39,10 @@
             </div>
             <form method="post" action="/Employee/CreateEmployee">
                 <div class="modal-body">
-                    <label>Müşteri Adı</label>
+                    @Html.LabelFor(x => x.First().EmployeeName)
                     <input name="EmployeeName" class="form-control" />
                     <br />
-                    <label>Müşteri Soyadı</label>
+                    @Html.LabelFor(x => x.First().EmployeeSurname)
                     <input name="EmployeeSurname" class="form-control" />
                     <br />
                     <label>Görsel</label>

@@ -32,6 +32,10 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpPost]
         public ActionResult CreateEmployee(Employee emp, int? DepartmentId)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
             if (DepartmentId.HasValue) // Eğer departman seçildiyse
             {
                 var department = db.Departments.Find(DepartmentId.Value);

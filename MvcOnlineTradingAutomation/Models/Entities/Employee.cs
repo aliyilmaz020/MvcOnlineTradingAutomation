@@ -11,9 +11,11 @@ namespace MvcOnlineTradingAutomation.Models.Entities
     {
         [Key]
         public int EmployeeId { get; set; }
+        [Display(Name ="Personel Adı")]
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string EmployeeName { get; set; }
+        [Display(Name = "Personel Soyadı")]
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string EmployeeSurname { get; set; }
