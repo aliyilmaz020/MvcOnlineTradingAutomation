@@ -18,6 +18,14 @@
             text-decoration: dashed;
         }
 </style>
+
+<br />
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>Ürün Adı: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
 <br />
 <table class="table table-bordered">
     <tr>

@@ -14,10 +14,14 @@ namespace MvcOnlineTradingAutomation.Controllers
     {
         // GET: Product
        Mvc5Context db = new Mvc5Context();
-        public ActionResult Index(int page=1)
+        public ActionResult Index(string p,int page=1)
         {
-            var products = db.Products.Where(x=>x.ProductStatus==true).ToList().ToPagedList(page,10);
-            return View(products);
+            var products = db.Products.Where(x=>x.ProductStatus==true).ToList();
+            if (!string.IsNullOrEmpty(p))
+            {
+                products = products.Where(y=>y.ProductName.ToLower().Contains(p.ToLower()) || y.ProductBrand.ToLower().Contains(p.ToLower())).ToList();
+            }
+            return View(products.ToPagedList(page, 10));
         }
         [HttpGet]
         public ActionResult CreateProduct()
