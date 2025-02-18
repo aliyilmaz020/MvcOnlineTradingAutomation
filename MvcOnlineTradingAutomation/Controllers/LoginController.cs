@@ -43,11 +43,28 @@ namespace MvcOnlineTradingAutomation.Controllers
             bool isLogin = db.Customers.Any(x => x.CustomerMail == mail && x.CustomerPassword == password);
             if (isLogin)
             {
-                FormsAuthentication.SetAuthCookie(mail,false);
+                FormsAuthentication.SetAuthCookie(mail, false);
                 Session["CustomerMail"] = mail;
                 return RedirectToAction("Index", "CustomerPanel");
             }
-            return RedirectToAction("Index","Login");
+            return RedirectToAction("Index", "Login");
+        }
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdminLogin(Admin a)
+        {
+            var isLogin = db.Admins.Any(x => x.Username == a.Username && x.Password == a.Password);
+            if (isLogin)
+            {
+                FormsAuthentication.SetAuthCookie(a.Username, false);
+                Session["Username"] = a.Username;
+                return RedirectToAction("Index", "Category");
+            }
+            return RedirectToAction("Index", "Login");
         }
     }
 }

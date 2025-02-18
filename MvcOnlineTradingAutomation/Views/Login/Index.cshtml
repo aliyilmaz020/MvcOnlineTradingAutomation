@@ -103,8 +103,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
     <!-- //login form popup-->
@@ -116,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>Personel Girişi</h3>
                     <div class="clear"></div>
                     <div class="login-agileits-top">
-                        <form action="#" method="post">
+                        <form action="/Login/AdminLogin" method="post">
                             <input type="text" class="name" name="Username" Placeholder="Kullanıcı Adı" required="" />
                             <input type="password" class="password" name="Password" Placeholder="Şifre" required="" />
                             <input type="submit" value="Giriş Yap">
@@ -130,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- register form popup-->
     <div class="pop-up">
         <div id="small-dialog2" class="mfp-hide book-form">
-            @Html.Action("Partial1","Login")
+            @Html.Action("Partial1", "Login")
         </div>
     </div>
     <!-- //register form popup-->

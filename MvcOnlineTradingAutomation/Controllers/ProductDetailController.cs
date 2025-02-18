@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class ProductDetailController : Controller
     {
         Mvc5Context db = new Mvc5Context();

@@ -8,6 +8,7 @@ using MvcOnlineTradingAutomation.Models.Entities;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class SaleController : Controller
     {
         Mvc5Context db = new Mvc5Context();

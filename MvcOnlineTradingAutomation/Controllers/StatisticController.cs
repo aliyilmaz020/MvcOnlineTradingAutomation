@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class StatisticController : Controller
     {
         Mvc5Context db = new Mvc5Context();

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         // GET: Department

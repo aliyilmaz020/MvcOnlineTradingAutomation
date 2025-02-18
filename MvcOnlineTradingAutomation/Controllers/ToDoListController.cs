@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class ToDoListController : Controller
     {
         // GET: ToDoList
