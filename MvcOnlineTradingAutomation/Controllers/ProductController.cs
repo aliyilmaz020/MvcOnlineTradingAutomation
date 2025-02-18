@@ -1,5 +1,6 @@
 ﻿using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MvcOnlineTradingAutomation.Controllers
     {
         // GET: Product
        Mvc5Context db = new Mvc5Context();
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var products = db.Products.Where(x=>x.ProductStatus==true).ToList();
+            var products = db.Products.Where(x=>x.ProductStatus==true).ToList().ToPagedList(page,10);
             return View(products);
         }
         [HttpGet]

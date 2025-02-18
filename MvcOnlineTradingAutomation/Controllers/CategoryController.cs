@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using PagedList.Mvc;
 namespace MvcOnlineTradingAutomation.Controllers
 {
     [Authorize]
@@ -15,9 +16,9 @@ namespace MvcOnlineTradingAutomation.Controllers
 
         // GET: Category
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var categories = db.Categories.ToList();
+            var categories = db.Categories.ToList().ToPagedList(page,5);
             return View(categories);
         }
         [HttpGet]

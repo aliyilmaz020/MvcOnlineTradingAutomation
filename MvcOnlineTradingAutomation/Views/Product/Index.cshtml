@@ -1,14 +1,26 @@
 ﻿@using MvcOnlineTradingAutomation.Models.Entities
-@model List<Product>
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<style>
+    .center {
+        text-align: center;
+    }
 
+    .pagination {
+    }
+
+        .pagination a {
+            text-decoration: dashed;
+        }
+</style>
 <br />
 <table class="table table-bordered">
     <tr>
-        <th>Ürün ID</th>
         <th>Adı</th>
         <th>Marka</th>
         <th>Stok Sayısı</th>
@@ -20,7 +32,6 @@
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.ProductId</td>
             <td>@x.ProductName</td>
             <td>@x.ProductBrand</td>
             <td>@x.ProductStock</td>
@@ -31,6 +42,13 @@
         </tr>
     }
 </table>
+<div style="float:right">
+    @Html.PagedListPager(Model as IPagedList, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string>
+        {"page-link"}
+    })
+</div>
 <a href="/Product/CreateProduct" class="btn btn-primary">Yeni Ürün</a>
 
 
