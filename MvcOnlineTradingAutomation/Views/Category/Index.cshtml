@@ -6,6 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Scripts/jquery-3.7.0.js"></script>
 <br />
 <table class="table table-bordered">
     <tr>
@@ -25,4 +26,25 @@
     LiElementClasses = new List<string> 
     { "page-link" }
 })
-<a href="/Category/CreateCategory" class="btn btn-primary">Yeni Kategori</a>
+<a data-toggle="modal" data-target="#Modal1" class="btn btn-primary">Yeni Kategori</a>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Kategori Ekleme</h3>
+            </div>
+            <form method="post" action="/Category/CreateCategory">
+                <div class="modal-body">
+                    <input class="form-control" name="CategoryName" placeholder="Kategori Adı" required />
+                    <br />
+                    <button class="btn btn-success" id="Btn1">Kaydet</button>
+                    <script>
+                        $('#Btn1').click(function () {
+                            alert('Kategori Başarılı Bir Şekilde Eklendi')
+                        });
+                    </script>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
