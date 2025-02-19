@@ -29,13 +29,15 @@
 <br />
 <table class="table table-bordered">
     <tr>
-        <th>Adı</th>
+        <th>Ürün</th>
         <th>Marka</th>
         <th>Stok Sayısı</th>
         <th>Alış Fiyatı</th>
         <th>Satış Fiyatı</th>
         <th>Kategori</th>
-        <th>İşlemler</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+        <th>Satış Yap</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -46,7 +48,9 @@
             <td>@x.ProductCashPrice ₺</td>
             <td>@x.ProductSalePrice ₺</td>
             <td>@x.Category.CategoryName</td>
-            <td><a href="/Product/RemoveProduct/@x.ProductId" class="btn btn-danger">Sil</a> <a href="/Product/EditProduct/@x.ProductId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Product/EditProduct/@x.ProductId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Product/RemoveProduct/@x.ProductId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Product/SellProduct/@x.ProductId" class="btn btn-dark">Satış Yap</a></td>
         </tr>
     }
 </table>

@@ -211,6 +211,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <Content Include="Image\ayla.jpg.jpg" />
+    <Content Include="Image\aylaakan.jpg" />
+    <Content Include="Image\cuneytcakir.png" />
+    <Content Include="Image\Ekran Görüntüsü %282%29.png" />
+    <Content Include="Image\images.jpeg" />
+    <Content Include="Image\photo-1565884280295-98eb83e41c65.jpeg" />
+    <Content Include="Image\selinkas.jpg" />
     <Content Include="webadmin\.gitignore" />
     <Content Include="webadmin\build\config\postcss.config.js" />
     <Content Include="webadmin\build\config\rollup.config.js" />
@@ -2707,6 +2714,7 @@
     <Content Include="webadmin\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="webadmin\plugins\toastr\toastr.js.map" />
     <Content Include="webadmin\README.md" />
+    <Content Include="Image\young-bearded-man-with-striped-shirt_273609-5677.avif" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -2899,10 +2907,10 @@
     <Content Include="Views\CustomerPanel\Index.cshtml" />
     <Content Include="Views\CustomerPanel\Orders.cshtml" />
     <Content Include="Views\Alert\Index.cshtml" />
+    <Content Include="Views\Product\SellProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

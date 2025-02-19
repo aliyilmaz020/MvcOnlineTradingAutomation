@@ -81,5 +81,27 @@ namespace MvcOnlineTradingAutomation.Controllers
             var values = db.Products.ToList();
             return View(values);
         }
+        [HttpGet]
+        public ActionResult SellProduct(int id)
+        {
+            List<SelectListItem> employee = db.Employees.Where(x => x.Status == true).Select(x => new SelectListItem
+            {
+                Text = x.EmployeeName + " " + x.EmployeeSurname,
+                Value = x.EmployeeId.ToString()
+            }).ToList();
+            ViewBag.Employee = employee;
+            var product = db.Products.Find(id);
+            ViewBag.ProductId = product.ProductId;
+            ViewBag.SalePrice = product.ProductSalePrice;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SellProduct(SaleOperation sale)
+        {
+            sale.Date = DateTime.Now;
+            db.SalesOperations.Add(sale);
+            db.SaveChanges();
+            return RedirectToAction("Index","Sale");
+        }
     }
 }
