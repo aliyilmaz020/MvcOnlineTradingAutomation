@@ -5,7 +5,7 @@
 }
 
 <br />
-@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post))
+@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post, new {@enctype="multipart/form-data"}))
 {
     @Html.HiddenFor(x => x.EmployeeId)
     @Html.LabelFor(x => x.EmployeeName, "Personel Adı")
@@ -15,7 +15,7 @@
     @Html.TextBoxFor(x => x.EmployeeSurname, new { @class = "form-control" })
     <br />
     @Html.LabelFor(x => x.EmployeeImage, "Görsel")
-    @Html.TextBoxFor(x => x.EmployeeImage, new { @class = "form-control" })
+    <input type="file" name="EmployeeImage" class="form-control" value="@Model.EmployeeImage" />
     <br />
     @Html.LabelFor(x => x.EmployeeCity, "Şehir")
     @Html.TextBoxFor(x => x.EmployeeCity, new { @class = "form-control" })

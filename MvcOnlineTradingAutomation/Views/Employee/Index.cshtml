@@ -37,7 +37,7 @@
             <div class="modal-header">
                 <h3 class="modal-title">Yeni Personel Ekleme</h3>
             </div>
-            <form method="post" action="/Employee/CreateEmployee">
+            <form method="post" action="/Employee/CreateEmployee" enctype="multipart/form-data">
                 <div class="modal-body">
                     @Html.LabelFor(x => x.First().EmployeeName)
                     <input name="EmployeeName" class="form-control" />
@@ -46,7 +46,7 @@
                     <input name="EmployeeSurname" class="form-control" />
                     <br />
                     <label>Görsel</label>
-                    <input name="EmployeeImage" class="form-control" />
+                    <input type="file" name="EmployeeImage" class="form-control" />
                     <br />
                     <label>Departman</label>
                     @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, new { @class = "form-control" })

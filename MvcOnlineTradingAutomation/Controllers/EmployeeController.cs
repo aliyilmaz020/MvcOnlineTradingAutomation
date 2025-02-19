@@ -2,6 +2,7 @@
 using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -46,6 +47,13 @@ namespace MvcOnlineTradingAutomation.Controllers
                 }
             }
             emp.Status = true;
+            if (Request.Files.Count > 0)
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string path = "~/Image/" + fileName;
+                Request.Files[0].SaveAs(Server.MapPath(path));
+                emp.EmployeeImage = "/Image/" + fileName;
+            }
             db.Employees.Add(emp);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -63,11 +71,18 @@ namespace MvcOnlineTradingAutomation.Controllers
         }
         public ActionResult EditEmployee(Employee e)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return RedirectToAction($"GetEmployee/{e.EmployeeId}");
             }
             var employee = db.Employees.Find(e.EmployeeId);
+            if (Request.Files.Count > 0)
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string path = "~/Image/" + fileName;
+                Request.Files[0].SaveAs(Server.MapPath(path));
+                e.EmployeeImage = "/Image/" + fileName;
+            }
             employee.EmployeeImage = e.EmployeeImage;
             employee.EmployeeName = e.EmployeeName;
             employee.EmployeeSurname = e.EmployeeSurname;
