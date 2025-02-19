@@ -8,14 +8,12 @@
 <br />
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
         <th>Departman Adı</th>
         <th>İşlemler</th>
     </tr>
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.DepartmentId</td>
             <td>@x.DepartmentName</td>
             <td><a href="/Department/RemoveDepartment/@x.DepartmentId" class="btn btn-danger">Sil</a> <a href="/Department/EditDepartment/@x.DepartmentId" class="btn btn-warning">Güncelle</a>
             <a class="btn btn-secondary" href="/Department/DepartmentDetail/@x.DepartmentId">Detay</a></td>

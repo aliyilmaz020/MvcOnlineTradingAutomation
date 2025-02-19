@@ -58,7 +58,7 @@ namespace MvcOnlineTradingAutomation.Controllers
         public ActionResult DepartmentDetail(int id)
         {
             ViewBag.DepartmentName = db.Departments.Where(x=>x.DepartmentId==id).Select(x=>x.DepartmentName).FirstOrDefault();
-            var employees = db.Employees.Where(x=>x.DepartmentId==id).ToList();
+            var employees = db.Employees.Where(x=>x.DepartmentId==id && x.Status==true).ToList();
             return View(employees);
         }
         public ActionResult DepartmentEmployeeSale(int id)

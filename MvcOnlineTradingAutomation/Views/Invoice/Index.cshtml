@@ -8,7 +8,6 @@
 <br />
 <table class="table table-bordered">
     <tr>
-        <th>Fatura ID</th>
         <th>Seri-Sıra No</th>
         <th>Vergi Dairesi</th>
         <th>Teslim Eden</th>
@@ -22,7 +21,6 @@
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.InvoiceId</td>
             <td>@x.InvoiceSerial-@x.InvoiceSequenceNum</td>
             <td>@x.InvoiceTaxOffice</td>
             <td>@x.InvoiceDelivery</td>

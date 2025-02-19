@@ -13,20 +13,20 @@ namespace MvcOnlineTradingAutomation.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-       Mvc5Context db = new Mvc5Context();
-        public ActionResult Index(string p,int page=1)
+        Mvc5Context db = new Mvc5Context();
+        public ActionResult Index(string p, int page = 1)
         {
-            var products = db.Products.Where(x=>x.ProductStatus==true).ToList();
+            var products = db.Products.Where(x => x.ProductStatus == true).ToList();
             if (!string.IsNullOrEmpty(p))
             {
-                products = products.Where(y=>y.ProductName.ToLower().Contains(p.ToLower()) || y.ProductBrand.ToLower().Contains(p.ToLower())).ToList();
+                products = products.Where(y => y.ProductName.ToLower().Contains(p.ToLower()) || y.ProductBrand.ToLower().Contains(p.ToLower())).ToList();
             }
             return View(products.ToPagedList(page, 10));
         }
         [HttpGet]
         public ActionResult CreateProduct()
         {
-            List<SelectListItem> value1 = db.Categories.Select(x=>new SelectListItem
+            List<SelectListItem> value1 = db.Categories.Select(x => new SelectListItem
             {
                 Text = x.CategoryName,
                 Value = x.CategoryId.ToString()
@@ -62,7 +62,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             return View(product);
         }
         [HttpPost]
-        public ActionResult EditProduct(Product p) 
+        public ActionResult EditProduct(Product p)
         {
             var product = db.Products.Find(p.ProductId);
             product.ProductName = p.ProductName;

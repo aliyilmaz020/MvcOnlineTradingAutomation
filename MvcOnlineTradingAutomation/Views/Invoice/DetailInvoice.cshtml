@@ -13,7 +13,6 @@
 </ol>
 <table class="table table-hover">
     <tr>
-        <th>ID</th>
         <th>Açıklama</th>
         <th>Miktar</th>
         <th>Birim Fiyat</th>
@@ -22,11 +21,10 @@
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.InvoiceDocumentId</td>
             <td>@x.Description</td>
             <td>@x.Amount</td>
-            <td>@x.UnitPrice</td>
-            <td>@x.Total</td>
+            <td>@x.UnitPrice ₺</td>
+            <td>@x.Total ₺</td>
         </tr>
     }
 </table>
