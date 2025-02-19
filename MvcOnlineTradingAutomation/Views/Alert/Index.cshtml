@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<br />
+<button id="btn1" class="btn btn-primary">Buton1</button>
+<button id="btn2" class="btn btn-warning">Buton2</button>
+<script>
+    $('#btn1').click(function () {
+        swal("Hello")
+    });
+</script>
+<script>
+    $('#btn2').click(function () {
+        swal("Merhaba başlık","merhaba içerik")
+    });
+</script>
