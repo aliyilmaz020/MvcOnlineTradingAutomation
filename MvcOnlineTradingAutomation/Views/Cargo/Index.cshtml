@@ -1,0 +1,64 @@
+﻿@model List<MvcOnlineTradingAutomation.Models.Entities.Cargo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Kargolar</h2>
+<br />
+@using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Kodu: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Employee</td>
+            <td>@x.Receiver</td>
+            <td>@x.Date</td>
+            <td>
+                <a class="btn btn-secondary" href="/Department/DepartmentDetail/@x.CargoId">Detay</a>
+            </td>
+        </tr>
+    }
+</table>
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Kargo</button>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Kargo Ekleme</h3>
+            </div>
+            <form method="post" action="/Cargo/CreateCargo">
+                <div class="modal-body">
+                    <label>Takip Kodu</label>
+                    <input type="text" name="TrackingCode" value="@ViewBag.Code" class="form-control" readonly />
+                    <br />
+                    <label>Personel</label>
+                    <input type="text" name="Employee" class="form-control" required />
+                    <br />
+                    <label>Alıcı</label>
+                    <input type="text" name="Receiver" class="form-control" required />
+                    <br />
+                    <label>Tarih</label>
+                    <input type="date" name="Date" class="form-control" required />
+                    <br />
+                    <label>Açıklama</label>
+                    <textarea name="Description" cols="1" rows="4" class="form-control" required></textarea>
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

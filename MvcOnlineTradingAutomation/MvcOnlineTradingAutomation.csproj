@@ -135,6 +135,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\Mvc5Context.cs" />
     <Compile Include="Controllers\AlertController.cs" />
+    <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\CustomerPanelController.cs" />
@@ -195,6 +196,10 @@
     <Compile Include="Migrations\202502202157555_mg-Cargo.cs" />
     <Compile Include="Migrations\202502202157555_mg-Cargo.Designer.cs">
       <DependentUpon>202502202157555_mg-Cargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502202217474_mg-Cargo1.cs" />
+    <Compile Include="Migrations\202502202217474_mg-Cargo1.Designer.cs">
+      <DependentUpon>202502202217474_mg-Cargo1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
@@ -2914,6 +2919,7 @@
     <Content Include="Views\CustomerPanel\Orders.cshtml" />
     <Content Include="Views\Alert\Index.cshtml" />
     <Content Include="Views\Product\SellProduct.cshtml" />
+    <Content Include="Views\Cargo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2978,6 +2984,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502202157555_mg-Cargo.resx">
       <DependentUpon>202502202157555_mg-Cargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502202217474_mg-Cargo1.resx">
+      <DependentUpon>202502202217474_mg-Cargo1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
