@@ -192,8 +192,14 @@
     <Compile Include="Migrations\202502171359459_ToDoMg.Designer.cs">
       <DependentUpon>202502171359459_ToDoMg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502202157555_mg-Cargo.cs" />
+    <Compile Include="Migrations\202502202157555_mg-Cargo.Designer.cs">
+      <DependentUpon>202502202157555_mg-Cargo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
+    <Compile Include="Models\Entities\Cargo.cs" />
+    <Compile Include="Models\Entities\CargoTracking.cs" />
     <Compile Include="Models\Entities\ClassGroup.cs" />
     <Compile Include="Models\Entities\Enums.cs" />
     <Compile Include="Models\Entities\Detail.cs" />
@@ -2969,6 +2975,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502171359459_ToDoMg.resx">
       <DependentUpon>202502171359459_ToDoMg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502202157555_mg-Cargo.resx">
+      <DependentUpon>202502202157555_mg-Cargo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
