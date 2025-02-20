@@ -2920,6 +2920,7 @@
     <Content Include="Views\Alert\Index.cshtml" />
     <Content Include="Views\Product\SellProduct.cshtml" />
     <Content Include="Views\Cargo\Index.cshtml" />
+    <Content Include="Views\Cargo\CargoTracking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

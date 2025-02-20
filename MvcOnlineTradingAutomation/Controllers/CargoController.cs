@@ -28,10 +28,10 @@ namespace MvcOnlineTradingAutomation.Controllers
             s3 = rnd.Next(10, 99);
             string code = s1.ToString() + chars[k1] + s2.ToString() + chars[k2] + s3.ToString() + chars[k3];
             ViewBag.Code = code;
-            var cargos = db.Cargos.Select(x=>x);
+            var cargos = db.Cargos.Select(x => x);
             if (!string.IsNullOrEmpty(p))
             {
-                cargos = cargos.Where(x=>x.TrackingCode.Contains(p));
+                cargos = cargos.Where(x => x.TrackingCode.Contains(p));
             }
             return View(cargos.ToList());
         }
@@ -47,6 +47,12 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.Cargos.Add(cargo);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult CargoTracking(string id)
+        {
+            var cargoTracking = db.CargoTrackings.Where(x=>x.TrackingCode == id).ToList();
+            return View(cargoTracking);
         }
     }
 }
