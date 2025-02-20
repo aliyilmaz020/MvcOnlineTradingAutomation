@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div>
+    <form method="post">
+        <input type="text" name="code" />
+        <input type="submit" value="QR Oluştur" />
+    </form>
+    <br />
+    @if (ViewBag.QRCode != null)
+    {
+        <img src="@ViewBag.QRCode" alt="" style="width:400px;height:400px;" />
+    }
+</div>
