@@ -1,7 +1,11 @@
 ﻿using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
+using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,7 +42,6 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpGet]
         public ActionResult CreateCargo()
         {
-
             return View();
         }
         [HttpPost]
@@ -53,6 +56,33 @@ namespace MvcOnlineTradingAutomation.Controllers
         {
             var cargoTracking = db.CargoTrackings.Where(x=>x.TrackingCode == id).ToList();
             return View(cargoTracking);
+        }
+        [HttpGet]
+        public ActionResult QrCode(string id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                    return Json(new { error = "ID boş olamaz." }, JsonRequestBehavior.AllowGet);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(id, QRCodeGenerator.ECCLevel.Q);
+                    using (QRCode qrCode = new QRCode(qrCodeData))
+                    using (Bitmap qrCodeImage = qrCode.GetGraphic(10))
+                    {
+                        qrCodeImage.Save(ms, ImageFormat.Png);
+                        string base64Image = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                        return Json(new { qrCode = base64Image }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
         }
     }
 }

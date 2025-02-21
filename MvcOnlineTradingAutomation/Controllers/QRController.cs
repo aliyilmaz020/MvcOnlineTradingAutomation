@@ -21,16 +21,16 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpPost]
         public ActionResult Index(string code)
         {
-            using(MemoryStream ms = new MemoryStream())
-            {
-                QRCodeGenerator qrCreate = new QRCodeGenerator();
-                QRCodeGenerator.QRCode qrCode = qrCreate.CreateQrCode(code, QRCodeGenerator.ECCLevel.Q);
-                using(Bitmap bt = qrCode.GetGraphic(10))
-                {
-                    bt.Save(ms,ImageFormat.Png);
-                    ViewBag.QRCode = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
-                }
-            }
+            //using(MemoryStream ms = new MemoryStream())
+            //{
+            //    QRCodeGenerator qrCreate = new QRCodeGenerator();
+            //    QRCodeGenerator qrCode = qrCreate.CreateQrCode(code, QRCodeGenerator.ECCLevel.Q);
+            //    using(Bitmap bt = qrCode.GetGraphic(10))
+            //    {
+            //        bt.Save(ms,ImageFormat.Png);
+            //        ViewBag.QRCode = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+            //    }
+            //}
             return View();
         }
     }
