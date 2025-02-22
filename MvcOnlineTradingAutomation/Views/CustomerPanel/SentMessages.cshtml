@@ -1,7 +1,7 @@
 ﻿@using MvcOnlineTradingAutomation.Models.Entities
 @model List<Message>
 @{
-    ViewBag.Title = "Messages";
+    ViewBag.Title = "SentMessages";
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
@@ -185,7 +185,7 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="read-mail.html">@db.Customers.Where(x=>x.CustomerMail == a.Sender).Select(x=>x.CustomerName + " " + x.CustomerSurname).FirstOrDefault()</a></td>
+                                            <td class="mailbox-name"><a href="read-mail.html">@db.Customers.Where(x => x.CustomerMail == a.Receiver).Select(x => x.CustomerName + " " + x.CustomerSurname).FirstOrDefault()</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@a.Subject</b> - @a.Content.Substring(0, 25)...
                                             </td>
@@ -278,3 +278,5 @@
     <script src="~/webadmin/dist/js/demo.js"></script>
 </body>
 </html>
+
+

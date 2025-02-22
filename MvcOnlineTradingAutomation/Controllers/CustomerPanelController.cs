@@ -32,7 +32,11 @@ namespace MvcOnlineTradingAutomation.Controllers
         public ActionResult Messages()
         {
             string mail = (string)Session["CustomerMail"];
-            var messages = db.Messages.ToList();
+            var messages = db.Messages.Where(x=>x.Receiver == mail).ToList();
+            var receivedMessageCount = db.Messages.Count(x=>x.Receiver==mail).ToString();
+            var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
+            ViewBag.d2 = sentMessageCount;
+            ViewBag.d1 = receivedMessageCount;
             return View(messages);
         }
         [HttpGet]
@@ -46,6 +50,16 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.Messages.Add(message);
             db.SaveChanges();
             return RedirectToAction("Index","CustomerPanel");
+        }
+        public ActionResult SentMessages()
+        {
+            string mail = (string)Session["CustomerMail"];
+            var messages = db.Messages.Where(x => x.Sender == mail).ToList();
+            var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
+            var receivedMessageCount = db.Messages.Count(x => x.Receiver == mail).ToString();
+            ViewBag.d1 = receivedMessageCount;
+            ViewBag.d2 = sentMessageCount;
+            return View(messages);
         }
     }
 }

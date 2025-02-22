@@ -212,6 +212,10 @@
     <Compile Include="Migrations\202502221606145_mg-Message.Designer.cs">
       <DependentUpon>202502221606145_mg-Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502221821049_DateToDatetime_Message.cs" />
+    <Compile Include="Migrations\202502221821049_DateToDatetime_Message.Designer.cs">
+      <DependentUpon>202502221821049_DateToDatetime_Message.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\Cargo.cs" />
@@ -2944,6 +2948,7 @@
     <Content Include="Views\Chart\Index7.cshtml" />
     <Content Include="Views\CustomerPanel\Messages.cshtml" />
     <Content Include="Views\CustomerPanel\NewMessage.cshtml" />
+    <Content Include="Views\CustomerPanel\SentMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3014,6 +3019,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502221606145_mg-Message.resx">
       <DependentUpon>202502221606145_mg-Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502221821049_DateToDatetime_Message.resx">
+      <DependentUpon>202502221821049_DateToDatetime_Message.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

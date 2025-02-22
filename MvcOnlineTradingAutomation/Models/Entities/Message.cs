@@ -28,7 +28,7 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [StringLength(2000)]
         public string Content { get; set; }
 
-        [Column(TypeName = "Date")]
+        [Column(TypeName = "Datetime")]
         public DateTime Date { get; set; }
     }
 }
