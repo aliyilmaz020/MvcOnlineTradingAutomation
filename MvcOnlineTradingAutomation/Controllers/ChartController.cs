@@ -46,7 +46,6 @@ namespace MvcOnlineTradingAutomation.Controllers
         }
         public ActionResult VisualizeProductResult()
         {
-
             return Json(ProductList(), JsonRequestBehavior.AllowGet);
         }
         public List<Class1> ProductList()
@@ -77,6 +76,28 @@ namespace MvcOnlineTradingAutomation.Controllers
                 Name = "Telefon",
                 Stock = 47
             });
+            return cls;
+        }
+        public ActionResult Index5()
+        {
+            return View();
+
+        }
+        public ActionResult VisualizeProductResult2()
+        {
+            return Json(ProductList2(), JsonRequestBehavior.AllowGet);
+        }
+        public List<Class2> ProductList2()
+        {
+            List<Class2> cls = new List<Class2>();
+            using (var db = new Mvc5Context())
+            {
+                cls = db.Products.Where(x=>x.ProductStatus==true).Select(x=>new Class2
+                {
+                    Name = x.ProductName,
+                    Stock = x.ProductStock
+                }).ToList();
+            }
             return cls;
         }
     }
