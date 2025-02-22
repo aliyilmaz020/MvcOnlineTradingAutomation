@@ -100,5 +100,13 @@ namespace MvcOnlineTradingAutomation.Controllers
             }
             return cls;
         }
+        public ActionResult Index6()
+        {
+            return View();
+        }
+        public ActionResult Index7()
+        {
+            return View();
+        }
     }
 }
