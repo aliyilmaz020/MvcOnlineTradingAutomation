@@ -1,5 +1,6 @@
 ﻿using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using static QRCoder.PayloadGenerator;
@@ -33,7 +34,7 @@ namespace MvcOnlineTradingAutomation.Controllers
         public ActionResult Messages()
         {
             string mail = (string)Session["CustomerMail"];
-            var messages = db.Messages.Where(x=>x.Receiver == mail).ToList();
+            var messages = db.Messages.Where(x=>x.Receiver == mail).OrderByDescending(x=>x.Date).ToList();
             var receivedMessageCount = db.Messages.Count(x=>x.Receiver==mail).ToString();
             var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
             ViewBag.d2 = sentMessageCount;
@@ -43,14 +44,22 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpGet]
         public ActionResult NewMessage()
         {
+            string mail = (string)Session["CustomerMail"];
+            var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
+            var receivedMessageCount = db.Messages.Count(x => x.Receiver == mail).ToString();
+            ViewBag.d1 = receivedMessageCount;
+            ViewBag.d2 = sentMessageCount;
             return View();
         }
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
+            string mail = (string)Session["CustomerMail"];
+            message.Date = DateTime.Now;
+            message.Sender = mail;
             db.Messages.Add(message);
             db.SaveChanges();
-            return RedirectToAction("Index","CustomerPanel");
+            return RedirectToAction("Messages","CustomerPanel");
         }
         public ActionResult SentMessages()
         {
