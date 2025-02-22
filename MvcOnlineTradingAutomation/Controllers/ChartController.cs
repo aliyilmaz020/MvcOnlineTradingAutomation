@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
+    [Authorize]
     public class ChartController : Controller
     {
         // GET: Graphic

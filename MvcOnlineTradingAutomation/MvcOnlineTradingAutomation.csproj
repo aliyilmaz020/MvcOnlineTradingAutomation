@@ -208,6 +208,10 @@
     <Compile Include="Migrations\202502202217474_mg-Cargo1.Designer.cs">
       <DependentUpon>202502202217474_mg-Cargo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502221606145_mg-Message.cs" />
+    <Compile Include="Migrations\202502221606145_mg-Message.Designer.cs">
+      <DependentUpon>202502221606145_mg-Message.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\Cargo.cs" />
@@ -224,6 +228,7 @@
     <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\InvoiceDocument.cs" />
+    <Compile Include="Models\Entities\Message.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\SaleOperation.cs" />
     <Compile Include="Models\Entities\ToDoList.cs" />
@@ -3004,6 +3009,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502202217474_mg-Cargo1.resx">
       <DependentUpon>202502202217474_mg-Cargo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502221606145_mg-Message.resx">
+      <DependentUpon>202502221606145_mg-Message.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
