@@ -25,7 +25,7 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         public string Subject { get; set; }
         
         [Column(TypeName = "Varchar")]
-        [StringLength(50)]
+        [StringLength(2000)]
         public string Content { get; set; }
 
         [Column(TypeName = "Date")]
