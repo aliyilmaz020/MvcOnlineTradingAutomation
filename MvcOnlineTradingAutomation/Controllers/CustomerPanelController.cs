@@ -2,6 +2,7 @@
 using MvcOnlineTradingAutomation.Models.Entities;
 using System.Linq;
 using System.Web.Mvc;
+using static QRCoder.PayloadGenerator;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
@@ -60,6 +61,16 @@ namespace MvcOnlineTradingAutomation.Controllers
             ViewBag.d1 = receivedMessageCount;
             ViewBag.d2 = sentMessageCount;
             return View(messages);
+        }
+        public ActionResult DetailMessage(int id)
+        {
+            string mail = (string)Session["CustomerMail"];
+            var receivedMessageCount = db.Messages.Count(x => x.Receiver == mail).ToString();
+            var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
+            ViewBag.d2 = sentMessageCount;
+            ViewBag.d1 = receivedMessageCount;
+            var message = db.Messages.Where(x=>x.MessageId == id).FirstOrDefault();
+            return View(message);
         }
     }
 }

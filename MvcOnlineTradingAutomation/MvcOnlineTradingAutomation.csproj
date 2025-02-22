@@ -2949,6 +2949,7 @@
     <Content Include="Views\CustomerPanel\Messages.cshtml" />
     <Content Include="Views\CustomerPanel\NewMessage.cshtml" />
     <Content Include="Views\CustomerPanel\SentMessages.cshtml" />
+    <Content Include="Views\CustomerPanel\DetailMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
