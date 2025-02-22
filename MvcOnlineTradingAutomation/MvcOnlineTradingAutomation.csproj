@@ -212,6 +212,7 @@
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\Cargo.cs" />
     <Compile Include="Models\Entities\CargoTracking.cs" />
+    <Compile Include="Models\Entities\Class1.cs" />
     <Compile Include="Models\Entities\ClassGroup.cs" />
     <Compile Include="Models\Entities\Enums.cs" />
     <Compile Include="Models\Entities\Detail.cs" />
@@ -2931,6 +2932,7 @@
     <Content Include="Views\Chart\Index.cshtml" />
     <Content Include="Views\Chart\Index2.cshtml" />
     <Content Include="Views\Chart\Index3.cshtml" />
+    <Content Include="Views\Chart\Index4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

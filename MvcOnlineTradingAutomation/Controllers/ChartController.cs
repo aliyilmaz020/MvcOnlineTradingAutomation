@@ -1,4 +1,5 @@
 ﻿using MvcOnlineTradingAutomation.Context;
+using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +39,45 @@ namespace MvcOnlineTradingAutomation.Controllers
                 .AddTitle("Stoklar")
                 .AddSeries(chartType: "Pie", name: "Stok", xValue: xvalue, yValues: yvalue);
             return File(charts.ToWebImage().GetBytes(), "image/jpeg");
+        }
+        public ActionResult Index4()
+        {
+            return View();
+        }
+        public ActionResult VisualizeProductResult()
+        {
+
+            return Json(ProductList(), JsonRequestBehavior.AllowGet);
+        }
+        public List<Class1> ProductList()
+        {
+            List<Class1> cls = new List<Class1>();
+            cls.Add(new Class1()
+            {
+                Name = "PC",
+                Stock = 120
+            });
+            cls.Add(new Class1()
+            {
+                Name = "Mobilya",
+                Stock = 70
+            });
+            cls.Add(new Class1()
+            {
+                Name = "Beyaz Eşya",
+                Stock = 150
+            });
+            cls.Add(new Class1()
+            {
+                Name = "Küçük Ev Aletleri",
+                Stock = 40
+            });
+            cls.Add(new Class1()
+            {
+                Name = "Telefon",
+                Stock = 47
+            });
+            return cls;
         }
     }
 }
