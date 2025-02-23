@@ -17,8 +17,23 @@ namespace MvcOnlineTradingAutomation.Controllers
         {
             string mail = (string)Session["CustomerMail"];
             ViewBag.Mail = mail;
-
             var values = db.Customers.FirstOrDefault(x=>x.CustomerMail == mail);
+            var customerId = db.Customers.Where(x=>x.CustomerMail == mail).Select(x=>x.CustomerId).FirstOrDefault();
+            ViewBag.CustomerId = customerId;
+            var sales = db.SalesOperations.Where(x=>x.CustomerId == customerId).Count();
+            ViewBag.TotalSale = sales;
+            if (db.SalesOperations.Where(x => x.CustomerId == customerId).Count() > 0)
+            {
+                var totalPrice = db.SalesOperations.Where(x => x.CustomerId == customerId).Sum(x => x.Total);
+                ViewBag.TotalPrice = totalPrice;
+                var quantitySale = db.SalesOperations.Where(x => x.CustomerId == customerId).Sum(x => x.Quantity);
+                ViewBag.TotalQuantity = quantitySale;
+            }
+            else
+            {
+                ViewBag.TotalPrice = 0;
+                ViewBag.TotalQuantity = 0;
+            }
             return View(values);
         }
         public ActionResult Index2()
