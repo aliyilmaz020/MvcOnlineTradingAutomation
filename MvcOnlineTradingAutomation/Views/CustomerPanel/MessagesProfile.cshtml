@@ -1,0 +1,18 @@
+﻿@model List<MvcOnlineTradingAutomation.Models.Entities.Message>
+@foreach (var x in Model)
+{
+    <div class="post">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="~/webadmin/dist/img/chat.png" alt="user image">
+            <span class="username">
+                <a href="#">@x.Sender</a>
+            </span>
+            <span class="description">@x.Subject - @x.Date.ToString("dd MMM yyyy dddd - HH:mm")</span>
+        </div>
+        <!-- /.user-block -->
+        <p>
+            @x.Content
+        </p>
+    </div>
+}
+

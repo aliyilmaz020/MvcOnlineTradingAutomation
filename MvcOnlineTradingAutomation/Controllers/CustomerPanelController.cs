@@ -113,5 +113,11 @@ namespace MvcOnlineTradingAutomation.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }
+        public PartialViewResult MessagesProfile()
+        {
+            string mail = (string)Session["CustomerMail"];
+            var messages = db.Messages.Where(x=>x.Receiver == mail).ToList();
+            return PartialView(messages);
+        }
     }
 }
