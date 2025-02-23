@@ -119,5 +119,22 @@ namespace MvcOnlineTradingAutomation.Controllers
             var messages = db.Messages.Where(x=>x.Receiver == mail).ToList();
             return PartialView(messages);
         }
+        public PartialViewResult SettingsProfile()
+        {
+            string mail = (string)Session["CustomerMail"];
+            var customer = db.Customers.Where(x=>x.CustomerMail == mail).FirstOrDefault();
+            return PartialView("SettingsProfile",customer);
+        }
+        public ActionResult UpdateProfile(Customer c)
+        {
+            var customer = db.Customers.Find(c.CustomerId);
+            customer.CustomerName = c.CustomerName;
+            customer.CustomerSurname = c.CustomerSurname;
+            customer.CustomerMail = c.CustomerMail;
+            customer.CustomerCity = c.CustomerCity;
+            customer.CustomerPassword = c.CustomerPassword;
+            db.SaveChanges();
+            return RedirectToAction("Index", "CustomerPanel");
+        }
     }
 }
