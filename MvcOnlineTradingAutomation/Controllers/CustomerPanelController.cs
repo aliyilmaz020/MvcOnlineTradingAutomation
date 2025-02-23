@@ -3,6 +3,7 @@ using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using static QRCoder.PayloadGenerator;
 
 namespace MvcOnlineTradingAutomation.Controllers
@@ -90,6 +91,12 @@ namespace MvcOnlineTradingAutomation.Controllers
             ViewBag.d1 = receivedMessageCount;
             var message = db.Messages.Where(x=>x.MessageId == id).FirstOrDefault();
             return View(message);
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
