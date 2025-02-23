@@ -71,6 +71,16 @@ namespace MvcOnlineTradingAutomation.Controllers
             ViewBag.d2 = sentMessageCount;
             return View(messages);
         }
+        public ActionResult SentMessageDetail(int id)
+        {
+            string mail = (string)Session["CustomerMail"];
+            var sentMessageCount = db.Messages.Count(x => x.Sender == mail).ToString();
+            var receivedMessageCount = db.Messages.Count(x => x.Receiver == mail).ToString();
+            ViewBag.d1 = receivedMessageCount;
+            ViewBag.d2 = sentMessageCount;
+            var message = db.Messages.Where(x => x.MessageId == id).FirstOrDefault();
+            return View(message);
+        }
         public ActionResult DetailMessage(int id)
         {
             string mail = (string)Session["CustomerMail"];

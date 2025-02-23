@@ -47,6 +47,7 @@ namespace MvcOnlineTradingAutomation.Controllers
         [HttpPost]
         public ActionResult CreateCargo(Cargo cargo)
         {
+            cargo.Date = DateTime.Now;
             db.Cargos.Add(cargo);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -84,5 +85,22 @@ namespace MvcOnlineTradingAutomation.Controllers
             }
 
         }
+        public ActionResult CustomerCargo(string p)
+        {
+            string mail = (string)Session["CustomerMail"];
+            string customer = db.Customers.Where(x=>x.CustomerMail == mail).Select(x=>x.CustomerName + " " + x.CustomerSurname).FirstOrDefault();
+            var cargos = db.Cargos.Where(x=>x.Receiver == customer).Select(x => x);
+            if (!string.IsNullOrEmpty(p))
+            {
+                cargos = cargos.Where(x => x.TrackingCode.Contains(p));
+            }
+            return View(cargos.ToList());
+        }
+        public ActionResult CustomerCargoTracking(string id)
+        {
+            var cargoTracking = db.CargoTrackings.Where(x => x.TrackingCode == id).ToList();
+            return View(cargoTracking);
+        }
+        
     }
 }

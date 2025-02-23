@@ -18,10 +18,10 @@ namespace MvcOnlineTradingAutomation.Models.Entities
         [StringLength(10)]
         public string TrackingCode { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(20)]
+        [StringLength(100)]
         public string Employee { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(20)]
+        [StringLength(100)]
         public string Receiver { get; set; }
         public DateTime Date { get; set; }
     }

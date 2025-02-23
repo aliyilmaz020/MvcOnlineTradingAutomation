@@ -1,14 +1,16 @@
 ﻿@model List<MvcOnlineTradingAutomation.Models.Entities.CargoTracking>
 @{
-    ViewBag.Title = "CargoTracking";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "CustomerCargoTracking";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
+
 <br />
 <h2>Kargo Hareketleri</h2>
 <br />
-<input type="hidden" name="TrackingCode" readonly/>
+<input type="hidden" name="TrackingCode" readonly />
 <table class="table table-bordered">
     <tr>
+        <th>#</th>
         <th>Açıklama</th>
         <th>Tarih</th>
     </tr>
@@ -22,3 +24,4 @@
         </tr>
     }
 </table>
+

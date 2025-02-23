@@ -1,0 +1,75 @@
+﻿@model List<MvcOnlineTradingAutomation.Models.Entities.Cargo>
+@{
+    ViewBag.Title = "CustomerCargoTracking";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<br />
+<h2>Kargolar</h2>
+<br />
+@using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Kodu: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Employee</td>
+            <td>@x.Receiver</td>
+            <td>@x.Date</td>
+            <td>
+                <a class="btn btn-secondary" href="/Cargo/CustomerCargoTracking/@x.TrackingCode">Detay</a>
+            </td>
+            <td>
+                <a class="btn btn-outline-success" data-toggle="modal" data-target="#Modal2" onclick="getQRCode('@x.TrackingCode')">QR Kodu</a>
+            </td>
+        </tr>
+    }
+</table>
+<div class="modal fade" id="Modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">QR Kodu</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="qrImage" src="" alt="QR Kodu" style="width:400px;height:400px; display:none;" />
+                <p id="qrError" style="color:red; display:none;">QR kod yüklenemedi.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getQRCode(text) {
+        $.ajax({
+            url: "/Cargo/QrCode",
+            type: "GET",
+            data: { id: text },
+            success: function (response) {
+                if (response.qrCode) {
+                    console.log("QR Kodu Alındı: ", response.qrCode); // Kontrol için
+                    $("#qrImage").attr("src", response.qrCode).show();
+                    $("#qrError").hide();
+                } else {
+                    $("#qrImage").hide();
+                    $("#qrError").text("QR kod oluşturulamadı: " + (response.error || "Bilinmeyen hata")).show();
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Hatası:", error);
+                $("#qrImage").hide();
+                $("#qrError").text("Sunucuya bağlanırken hata oluştu.").show();
+            }
+        });
+    }
+</script>
