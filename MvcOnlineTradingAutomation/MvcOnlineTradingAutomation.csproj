@@ -2957,6 +2957,7 @@
     <Content Include="Views\Cargo\CustomerCargoTracking.cshtml" />
     <Content Include="Views\CustomerPanel\MessagesProfile.cshtml" />
     <Content Include="Views\CustomerPanel\SettingsProfile.cshtml" />
+    <Content Include="Views\CustomerPanel\AnnouncementsProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -136,5 +136,10 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "CustomerPanel");
         }
+        public PartialViewResult AnnouncementsProfile()
+        {
+            var values = db.Messages.Where(x=>x.Sender == "admin").OrderByDescending(x=>x.Date).ToList();
+            return PartialView(values);
+        }
     }
 }
