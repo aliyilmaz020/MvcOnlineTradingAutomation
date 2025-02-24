@@ -223,6 +223,7 @@
     <Compile Include="Models\Entities\CargoTracking.cs" />
     <Compile Include="Models\Entities\Class1.cs" />
     <Compile Include="Models\Entities\Class2.cs" />
+    <Compile Include="Models\Entities\Class3.cs" />
     <Compile Include="Models\Entities\ClassGroup.cs" />
     <Compile Include="Models\Entities\Enums.cs" />
     <Compile Include="Models\Entities\Detail.cs" />
@@ -2960,6 +2961,7 @@
     <Content Include="Views\CustomerPanel\SettingsProfile.cshtml" />
     <Content Include="Views\CustomerPanel\AnnouncementsProfile.cshtml" />
     <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\Category\Demo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

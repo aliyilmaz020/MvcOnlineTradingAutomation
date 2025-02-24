@@ -54,5 +54,22 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Demo()
+        {
+            Class3 cs = new Class3();
+            cs.Categories = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            cs.Products = new SelectList(db.Products, "ProductId", "ProductName");
+            return View(cs);
+        }
+        public JsonResult GetProduct(int p)
+        {
+            var products = db.Products.Where(x=>x.ProductStatus==true).Join(db.Categories, x => x.CategoryId, y => y.CategoryId, (x, y) => new { x, y }).Where(d1=>d1.x.CategoryId == p)
+                .Select(z => new
+                {
+                    Text = z.x.ProductName,
+                    Value = z.x.ProductId.ToString()
+                }).ToList(); 
+            return Json(products,JsonRequestBehavior.AllowGet);
+        }
     }
 }
