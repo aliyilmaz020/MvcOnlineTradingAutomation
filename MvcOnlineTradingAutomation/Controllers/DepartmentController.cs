@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace MvcOnlineTradingAutomation.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "A")]
     public class DepartmentController : Controller
     {
         // GET: Department
