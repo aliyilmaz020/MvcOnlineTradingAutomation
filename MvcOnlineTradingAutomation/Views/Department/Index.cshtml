@@ -15,8 +15,10 @@
     {
         <tr>
             <td>@x.DepartmentName</td>
-            <td><a href="/Department/RemoveDepartment/@x.DepartmentId" class="btn btn-danger">Sil</a> <a href="/Department/EditDepartment/@x.DepartmentId" class="btn btn-warning">Güncelle</a>
-            <a class="btn btn-secondary" href="/Department/DepartmentDetail/@x.DepartmentId">Detay</a></td>
+            <td>
+                <a href="/Department/RemoveDepartment/@x.DepartmentId" class="btn btn-danger">Sil</a> <a href="/Department/EditDepartment/@x.DepartmentId" class="btn btn-warning">Güncelle</a>
+                <a class="btn btn-secondary" href="/Department/DepartmentDetail/@x.DepartmentId">Detay</a>
+            </td>
         </tr>
     }
 </table>
@@ -30,7 +32,7 @@
             <form method="post" action="/Department/CreateDepartment">
                 <div class="modal-body">
                     <label>Departman Adı</label>
-                    <input name="DepartmentName" class="form-control" required/>
+                    <input name="DepartmentName" class="form-control" required />
                     <br />
                     <button class="btn btn-success">Kaydet</button>
                 </div>

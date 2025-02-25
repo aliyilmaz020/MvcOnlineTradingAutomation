@@ -3,14 +3,13 @@
     ViewBag.Title = "Dynamic";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/jquery-3.7.0.js"></script>
-<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
 <br />
 <br />
 <div class="panel panel-default">
     <div class="panel-heading d-flex justify-content-between align-items-center">
         <h3>Fatura İşlemleri</h3>
-        <a href="/Fatura/YeniFatura" class="btn btn-primary">Fatura Girişi</a>
+        <button data-bs-target="#newOrderModal" data-bs-toggle="modal" class="btn btn-primary">Fatura Girişi</button>
     </div>
     <br />
     @* Fatura Listesi *@
@@ -54,7 +53,7 @@
                                 <strong>Toplam: </strong> <span class="ms-2">@totalBill ₺</span>
                             </div>
                         </td>
-                        
+
                     </tr>
                 </tbody>
             </table>
@@ -65,4 +64,289 @@
         <h3 style="color:red;">Empty!</h3>
     </div>
 </div>
+<div class="modal fade" id="newOrderModal">
+    <div class="modal-dialog modal-lg" style=" width: 900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Yeni Fatura Girişi</h4>
+            </div>
+            <form id="NewOrderForm">
+                <div class="modal-body">
+                    @*Invoice Details*@
+                    <h5 style="color:#ff6347">Fatura Detayları</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="InvoiceId" />
+                        <div class="form-group" style="margin-left:10px;">
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Seri No</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceSerial" maxlength="1" name="InvoiceSerial" placeholder="Seri Numarası" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Sıra No</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceSequenceNum" name="InvoiceSequenceNum" placeholder="Sıra No" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Tarih</label>
+                                    <div class="col-md-8">
+                                        <input type="date" id="InvoiceDate" name="InvoiceDate" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Vergi Dairesi</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceTaxOffice" name="InvoiceTaxOffice" placeholder="Vergi Dairesi" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Saat</label>
+                                    <div class="col-md-8">
+                                        <input type="time" id="InvoiceTime" name="InvoiceTime" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Teslim Eden</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceDelivery" name="InvoiceDelivery" placeholder="Teslim Eden Müşteri/Personel" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Teslim Alan</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceReceiver" name="InvoiceReceiver" placeholder="Teslim Alan Müşteri/Personel" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Tutar</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="InvoiceTotal" name="InvoiceTotal" placeholder="Fatura Tutarı" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    @*Invoice Documents*@
+                    <h5 style="margin-top:10px;color:#ff6347">Fatura Kalemleri</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="id" />
+                        <div class="form-group" style="margin-left:10px;">
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Açıklama</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="Description" name="Description" placeholder="Açıklama" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Miktar</label>
+                                    <div class="col-md-8">
+                                        <input type="number" min="0" max="20" id="Amount" name="Amount" placeholder="Miktar" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <label class="control-label col-md-4">Birim Fiyat</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="UnitPrice" name="UnitPrice" placeholder="Birim Fiyat" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <a class="btn btn-primary" id="addToList" style="margin-left:255px;">Listeye Ekle</a>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <table id="detailsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">Açıklama</th>
+                                    <th style="width:20%">Miktar</th>
+                                    <th style="width:15%">Fiyat</th>
+                                    <th style="width:25%">Tutar</th>
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Faturayı Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        //Show Modal.
+        function addNewOrder() {
+            $("#newOrderModal").modal();
+        }
+
+        //Add Multiple Order.
+        $("#addToList").click(function (e) {
+            e.preventDefault();
+            if ($.trim($("#Description").val()) == "" || $.trim($("#UnitPrice").val()) == "" || $.trim($("#Amount").val()) == "") return;
+
+                var Description = $("#Description").val(),
+                UnitPrice = $("#UnitPrice").val(),
+                Amount = $("#Amount").val(),
+                detailsTableBody = $("#detailsTable tbody");
+
+
+
+            var productItem = '<tr><td>' + Description + '</td><td>' + Amount + '</td><td>' + UnitPrice + '</td><td>' + (parseFloat(UnitPrice) * parseInt(Amount)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+
+            detailsTableBody.append(productItem);
+
+            clearItem();
+
+        });
+
+        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+
+        function clearItem() {
+
+            $("#Description").val('');
+
+            $("#UnitPrice").val('');
+
+            $("#Amount").val('');
+
+        }
+
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+
+        $(document).on('click', 'a.deleteItem', function (e) {
+
+            e.preventDefault();
+
+            var $self = $(this);
+
+            if ($(this).attr('data-itemId') == "0") {
+
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+
+                    $(this).remove();
+
+                });
+
+            }
+
+        });
+
+        //After Click Save Button Pass All Data View To Controller For Save Database
+
+        function saveOrder(data) {
+
+            return $.ajax({
+
+                contentType: 'application/json; charset=utf-8',
+
+                dataType: 'json',
+
+                type: 'POST',
+
+                url: "/Siparis/SaveOrder",
+
+                data: data,
+
+                success: function (result) {
+
+                    alert(result);
+
+                    location.reload();
+
+                },
+
+                error: function () {
+
+                    alert("Error!")
+
+                }
+
+            });
+
+        }
+
+        //Collect Multiple Order List For Pass To Controller
+
+        $("#saveOrder").click(function (e) {
+
+            e.preventDefault();
+
+
+
+            var orderArr = [];
+
+            orderArr.length = 0;
+
+
+
+            $.each($("#detailsTable tbody tr"), function () {
+
+                orderArr.push({
+
+                    urun: $(this).find('td:eq(0)').html(),
+
+                    Adet: $(this).find('td:eq(1)').html(),
+
+                    Fiyat: $(this).find('td:eq(2)').html(),
+
+                    Toplam: $(this).find('td:eq(3)').html()
+
+                });
+
+            });
+
+
+
+
+
+            var data = JSON.stringify({
+
+                ad: $("#ad").val(),
+
+                sehir: $("#sehir").val(),
+
+                order: orderArr
+
+            });
+
+
+
+            $.when(saveOrder(data)).then(function (response) {
+
+                console.log(response);
+
+            }).fail(function (err) {
+
+                console.log(err);
+
+            });
+
+        });
+
+    </script>
+
+}
