@@ -74,9 +74,36 @@ namespace MvcOnlineTradingAutomation.Controllers
         public ActionResult Dynamic()
         {
             Class4 cs = new Class4();
-            cs.Invoices = db.Invoices.Where(x=>x.InvoiceStatus==true).ToList();
+            cs.Invoices = db.Invoices.Where(x => x.InvoiceStatus == true).ToList();
             cs.InvoicesDocuments = db.InvoicesDocument.ToList();
             return View(cs);
+        }
+        public ActionResult SaveInvoice(string serial, string sequenceNum, DateTime date, string taxOffice, string time,
+            string delivery, string receiver, string total, InvoiceDocument[] docs)
+        {
+            Invoice i = new Invoice();
+            i.InvoiceSerial = serial;
+            i.InvoiceSequenceNum = sequenceNum;
+            i.InvoiceTaxOffice = taxOffice;
+            i.InvoiceDate = date;
+            i.InvoiceTime = time;
+            i.InvoiceDelivery = delivery;
+            i.InvoiceRecevier = receiver;
+            i.Total = decimal.Parse(total);
+            i.InvoiceStatus = true;
+            db.Invoices.Add(i);
+            foreach (var doc in docs)
+            {
+                InvoiceDocument ic = new InvoiceDocument();
+                ic.Description = doc.Description;
+                ic.UnitPrice = doc.UnitPrice;
+                ic.Amount = doc.Amount;
+                ic.InvoiceId = doc.InvoiceId;
+                ic.Total = doc.Total;
+                db.InvoicesDocument.Add(ic);
+            }
+            db.SaveChanges();
+            return Json("İşlem Başarılı", JsonRequestBehavior.AllowGet);
         }
     }
 }
