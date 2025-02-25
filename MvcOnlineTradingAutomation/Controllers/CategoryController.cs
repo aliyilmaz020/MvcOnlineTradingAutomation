@@ -10,6 +10,7 @@ using PagedList.Mvc;
 namespace MvcOnlineTradingAutomation.Controllers
 {
     [Authorize]
+    [Authorize(Roles="A")]
     public class CategoryController : Controller
     {
         Mvc5Context db = new Mvc5Context();
