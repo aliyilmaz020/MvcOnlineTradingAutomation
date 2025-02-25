@@ -71,5 +71,12 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction($"DetailInvoice/{doc.InvoiceId}");
         }
+        public ActionResult Dynamic()
+        {
+            Class4 cs = new Class4();
+            cs.Invoices = db.Invoices.Where(x=>x.InvoiceStatus==true).ToList();
+            cs.InvoicesDocuments = db.InvoicesDocument.ToList();
+            return View(cs);
+        }
     }
 }

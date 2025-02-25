@@ -1,0 +1,68 @@
+﻿@model MvcOnlineTradingAutomation.Models.Entities.Class4
+@{
+    ViewBag.Title = "Dynamic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading d-flex justify-content-between align-items-center">
+        <h3>Fatura İşlemleri</h3>
+        <a href="/Fatura/YeniFatura" class="btn btn-primary">Fatura Girişi</a>
+    </div>
+    <br />
+    @* Fatura Listesi *@
+    @foreach (var x in Model.Invoices)
+    {
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <tbody>
+                    <tr>
+                        <td>Seri-SıraNo : @x.InvoiceSerial-@x.InvoiceSequenceNum </td>
+                        <td>Teslim Alan: @x.InvoiceRecevier </td>
+                        <td>Vergi Dairesi: @x.InvoiceTaxOffice </td>
+                        <td>Tarih : @x.InvoiceDate.ToShortDateString() </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Açıklama</th>
+                                        <th>Miktar</th>
+                                        <th>Fiyat</th>
+                                        <th>Tutar</th>
+                                    </tr>
+                                    @{
+                                        decimal totalBill = 0;
+                                    }
+                                    @foreach (var a in x.InvoiceDocuments)
+                                    {
+                                        <tr>
+                                            <td>@a.Description</td>
+                                            <td>@a.Amount</td>
+                                            <td>@a.UnitPrice ₺</td>
+                                            <td>@a.Total ₺</td>
+                                        </tr>
+                                        totalBill = totalBill + a.Total;
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end">
+                                <strong>Toplam: </strong> <span class="ms-2">@totalBill ₺</span>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    }
+    <div class="panel-body">
+        <h3 style="color:red;">Empty!</h3>
+    </div>
+</div>
+
