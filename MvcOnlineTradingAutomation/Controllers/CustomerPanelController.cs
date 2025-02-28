@@ -1,4 +1,5 @@
-﻿using MvcOnlineTradingAutomation.Context;
+﻿using MvcOnlineTradingAutomation.Attributes;
+using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Linq;
@@ -8,7 +9,7 @@ using static QRCoder.PayloadGenerator;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles="C")]
     public class CustomerPanelController : Controller
     {
         Mvc5Context db = new Mvc5Context();
@@ -20,6 +21,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             var values = db.Customers.FirstOrDefault(x=>x.CustomerMail == mail);
             var customerId = db.Customers.Where(x=>x.CustomerMail == mail).Select(x=>x.CustomerId).FirstOrDefault();
             ViewBag.CustomerId = customerId;
+            ViewBag.Customer = db.Customers.Where(x => x.CustomerMail == mail).Select(x => x.CustomerName + " " + x.CustomerSurname).FirstOrDefault();
             var sales = db.SalesOperations.Where(x=>x.CustomerId == customerId).Count();
             ViewBag.TotalSale = sales;
             if (db.SalesOperations.Where(x => x.CustomerId == customerId).Count() > 0)

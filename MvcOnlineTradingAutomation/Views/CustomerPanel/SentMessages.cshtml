@@ -185,7 +185,7 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="read-mail.html">@db.Customers.Where(x => x.CustomerMail == a.Receiver).Select(x => x.CustomerName + " " + x.CustomerSurname).FirstOrDefault()</a></td>
+                                            <td class="mailbox-name"><a href="#">@db.Customers.Where(x => x.CustomerMail == a.Receiver).Select(x => x.CustomerName + " " + x.CustomerSurname).FirstOrDefault()</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@a.Subject</b> - @a.Content.Substring(0, 25)...
                                             </td>

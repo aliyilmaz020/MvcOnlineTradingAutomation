@@ -1,11 +1,12 @@
-﻿using MvcOnlineTradingAutomation.Context;
+﻿using MvcOnlineTradingAutomation.Attributes;
+using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles ="A,B")]
     public class CustomerController : Controller
     {
         Mvc5Context db = new Mvc5Context();

@@ -63,7 +63,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             {
                 FormsAuthentication.SetAuthCookie(a.Username, false);
                 Session["Username"] = a.Username;
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Index", "Gallery");
             }
             return RedirectToAction("Index", "Login");
         }

@@ -7,10 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using MvcOnlineTradingAutomation.Attributes;
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
-    [Authorize(Roles="A")]
+    [CustomAuthorize(Roles ="A,B")]
     public class CategoryController : Controller
     {
         Mvc5Context db = new Mvc5Context();

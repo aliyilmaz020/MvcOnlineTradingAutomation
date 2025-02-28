@@ -1,6 +1,7 @@
 ﻿using MvcOnlineTradingAutomation.Context;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -39,8 +40,19 @@ namespace MvcOnlineTradingAutomation.Roles
         public override string[] GetRolesForUser(string username)
         {
             Mvc5Context db = new Mvc5Context();
-            var k = db.Admins.FirstOrDefault(x => x.Username == username);
-            return new string[] { k.Authority };
+            var admin = db.Admins.FirstOrDefault(x => x.Username == username);
+            if (admin != null)
+            {
+                return new string[] { admin.Authority };
+
+            }
+            var customer = db.Customers.FirstOrDefault(x => x.CustomerMail == username);
+            if (customer != null)
+            {
+                return new string[] { customer.Authority };
+            }
+            Debug.WriteLine($"Yetki bulunamadı: {username}");
+            return new string[] { };
         }
 
         public override string[] GetUsersInRole(string roleName)

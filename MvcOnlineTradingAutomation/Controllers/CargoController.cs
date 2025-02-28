@@ -9,15 +9,16 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcOnlineTradingAutomation.Attributes;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles="A,C")]
     public class CargoController : Controller
     {
         // GET: Cargo
         Mvc5Context db = new Mvc5Context();
-
+        [CustomAuthorize(Roles = "A")]
         public ActionResult Index(string p)
         {
             Random rnd = new Random();
@@ -39,11 +40,13 @@ namespace MvcOnlineTradingAutomation.Controllers
             }
             return View(cargos.ToList());
         }
+        [CustomAuthorize(Roles = "A")]
         [HttpGet]
         public ActionResult CreateCargo()
         {
             return View();
         }
+        [CustomAuthorize(Roles = "A")]
         [HttpPost]
         public ActionResult CreateCargo(Cargo cargo)
         {
@@ -52,6 +55,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [CustomAuthorize(Roles = "A")]
         [HttpGet]
         public ActionResult CargoTracking(string id)
         {
@@ -59,12 +63,13 @@ namespace MvcOnlineTradingAutomation.Controllers
             return View(cargoTracking);
         }
         [HttpGet]
+        [CustomAuthorize(Roles = "A,C")]
         public ActionResult QrCode(string id)
         {
             try
             {
                 if (string.IsNullOrEmpty(id))
-                    return Json(new { error = "ID boş olamaz." }, JsonRequestBehavior.AllowGet);
+                    return RedirectToAction("Page403","Error");
 
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -85,6 +90,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             }
 
         }
+        [CustomAuthorize(Roles="C")]
         public ActionResult CustomerCargo(string p)
         {
             string mail = (string)Session["CustomerMail"];
@@ -96,6 +102,7 @@ namespace MvcOnlineTradingAutomation.Controllers
             }
             return View(cargos.ToList());
         }
+        [CustomAuthorize(Roles = "C")]
         public ActionResult CustomerCargoTracking(string id)
         {
             var cargoTracking = db.CargoTrackings.Where(x => x.TrackingCode == id).ToList();

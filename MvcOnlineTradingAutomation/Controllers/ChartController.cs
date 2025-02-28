@@ -1,4 +1,5 @@
-﻿using MvcOnlineTradingAutomation.Context;
+﻿using MvcOnlineTradingAutomation.Attributes;
+using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
 using System;
 using System.Collections;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles ="A,B")]
     public class ChartController : Controller
     {
         // GET: Graphic

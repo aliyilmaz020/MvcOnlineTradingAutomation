@@ -1,4 +1,5 @@
-﻿using MvcOnlineTradingAutomation.Context;
+﻿using MvcOnlineTradingAutomation.Attributes;
+using MvcOnlineTradingAutomation.Context;
 using MvcOnlineTradingAutomation.Models.Entities;
 using PagedList;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTradingAutomation.Controllers
 {
-    [Authorize]
+    [CustomAuthorize(Roles = "A,B")]
     public class ProductController : Controller
     {
         // GET: Product
